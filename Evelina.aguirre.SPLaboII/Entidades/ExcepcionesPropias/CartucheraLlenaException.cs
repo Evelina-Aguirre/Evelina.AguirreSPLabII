@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades.ExcepcionesPropias
 {
-    class CartucheraLlenaException : Exception
+    public class CartucheraLlenaException : Exception
     {
         public CartucheraLlenaException() : base()
         {

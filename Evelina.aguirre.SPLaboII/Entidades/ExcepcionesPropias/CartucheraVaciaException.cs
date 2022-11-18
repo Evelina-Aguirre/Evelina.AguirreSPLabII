@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades.ExcepcionesPropias
 {
-    class CartucheraVaciaException :Exception 
+    public class CartucheraVaciaException :Exception 
     {
         public CartucheraVaciaException() : base()
         {

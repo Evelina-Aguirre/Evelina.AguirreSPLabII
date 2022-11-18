@@ -1,9 +1,5 @@
 ﻿using Entidades.ExcepcionesPropias;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entidades
 {
@@ -20,18 +16,18 @@ namespace Entidades
             this.cantidadActual = 0;
         }
 
+        public int CantidadActual
+        {
+            get
+            {
+                return cantidadActual;
+            }
+        }
         public float PrecioTotal
         {
             get
             {
-                if(this.cantidadActual > 0)
-                {
-                  return (float)CalcularPrecioTotal();
-                }
-                else
-                {
-                    throw new CartucheraVaciaException();
-                }
+               return (float)CalcularPrecioTotal();
             }
         }
 
@@ -41,10 +37,17 @@ namespace Entidades
         /// <returns>Total acumulado</returns>
         private double CalcularPrecioTotal()
         {
-            float acum=0;
-            foreach (T item in this.elementos)
+            float acum = 0;
+            if (CantidadActual > 0)
             {
-                acum += item.Precio;
+                foreach (T item in elementos)
+                {
+                    acum += item.Precio;
+                }
+            }
+            else
+            {
+                throw new CartucheraVaciaException();
             }
             return acum;
         }
@@ -57,9 +60,10 @@ namespace Entidades
         /// <returns>Cartuchera con el útil agregado de tener la capacidad.</returns>
         public static Cartuchera<T> operator +(Cartuchera<T> c, T elemento)
         {
-            if(c.cantidadActual < c.cantidadMaxima)
+            if (c.cantidadActual < c.cantidadMaxima)
             {
                 c.elementos.Add(elemento);
+                c.cantidadActual++;
             }
             else
             {
