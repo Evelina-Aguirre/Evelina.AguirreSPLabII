@@ -8,7 +8,7 @@ namespace Entidades
 {
     public class Sacapunta : Utiles
     {
-        public Sacapunta(int cantidadMaxima, List<Utiles> elementos) : base(cantidadMaxima, elementos)
+        public Sacapunta(float precio, string marca) : base(precio, marca)
         {
         }
     }

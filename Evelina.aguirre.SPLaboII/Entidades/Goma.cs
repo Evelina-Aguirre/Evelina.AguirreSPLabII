@@ -8,7 +8,7 @@ namespace Entidades
 {
     public class Goma : Utiles
     {
-        public Goma(int cantidadMaxima, List<Utiles> elementos) : base(cantidadMaxima, elementos)
+        public Goma(float precio, string marca) : base(precio, marca)
         {
         }
     }
