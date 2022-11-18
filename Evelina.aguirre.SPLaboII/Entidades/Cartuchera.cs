@@ -24,22 +24,37 @@ namespace Entidades
         {
             get
             {
-                return (float)CalcularPrecioTotal();
+                if(this.cantidadActual > 0)
+                {
+                  return (float)CalcularPrecioTotal();
+                }
+                else
+                {
+                    throw new CartucheraVaciaException();
+                }
             }
         }
 
+        /// <summary>
+        /// Recorre la lista de ítems de una lista y suma el precio de sus elementos;
+        /// </summary>
+        /// <returns>Total acumulado</returns>
         private double CalcularPrecioTotal()
         {
             float acum=0;
-            int cont=0;
             foreach (T item in this.elementos)
             {
                 acum += item.Precio;
-                cont++;
             }
-            return acum*cont;
+            return acum;
         }
 
+        /// <summary>
+        /// Agrega un elemento a la cartuchera validando que esta no sobrepase su capacidad máxima.
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="elemento"></param>
+        /// <returns>Cartuchera con el útil agregado de tener la capacidad.</returns>
         public static Cartuchera<T> operator +(Cartuchera<T> c, T elemento)
         {
             if(c.cantidadActual < c.cantidadMaxima)
