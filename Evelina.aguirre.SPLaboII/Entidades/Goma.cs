@@ -8,7 +8,7 @@ namespace Entidades
 {
     public class Goma : Utiles
     {
-        public Goma(float precio, string marca) : base(precio, marca)
+        public Goma(float precio, string marca) : base("Goma",precio, marca)
         {
         }
     }

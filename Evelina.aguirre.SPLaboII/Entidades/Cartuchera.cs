@@ -1,5 +1,6 @@
 ﻿using Entidades.ExcepcionesPropias;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Entidades
 {
@@ -74,6 +75,18 @@ namespace Entidades
                 throw new CartucheraLlenaException();
             }
             return c;
+        }
+
+        public string imprimirElementosCartuchera()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Capacidad cartuchera: {this.cantidadMaxima}");
+            sb.AppendLine($"Cantidad de elementos: {this.CantidadActual}");
+            foreach (Utiles item in this.elementos)
+            {
+                item.MostrarDatos();
+            }
+            return sb.ToString();
         }
 
     }

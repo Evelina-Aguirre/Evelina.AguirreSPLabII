@@ -8,6 +8,13 @@ namespace Entidades.Archivos
 {
     public class Txt : ISerializa<Cartuchera<Utiles>>, IDeserializa<List<Utiles>>
     {
+        static string path;
+
+        static Txt()
+        {
+            path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            path += @"\EvelinaAguirre_Archivos_2C\";
+        }
         public void GuardarDatos(List<Cartuchera<Utiles>> listaConDatos)
         {
             throw new NotImplementedException();

@@ -8,7 +8,7 @@ namespace Entidades
 {
     public class Lapiz : Utiles
     {
-        public Lapiz(float precio, string marca) : base(precio, marca)
+        public Lapiz(float precio, string marca) : base("Lapiz",precio, marca)
         {
         }
     }
