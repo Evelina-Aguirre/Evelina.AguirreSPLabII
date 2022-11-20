@@ -3,8 +3,11 @@ using System.Collections.Generic;
 
 namespace Entidades
 {
+    public delegate void NotificadorSuperaPrecio();
     public class Cartuchera<T> where T : Utiles
     {
+        public event NotificadorSuperaPrecio EventoPrecio;
+
         private int cantidadMaxima;
         private List<T> elementos;
         private int cantidadActual;
@@ -16,39 +19,36 @@ namespace Entidades
             this.cantidadActual = 0;
         }
 
-        public int CantidadActual
-        {
-            get
-            {
-                return cantidadActual;
-            }
-        }
+        public int CantidadActual { get => cantidadActual; }
         public float PrecioTotal
         {
             get
             {
-               return (float)CalcularPrecioTotal();
+                if (CantidadActual > 0)
+                {
+                    return (float)CalcularPrecioTotal();
+                }
+                else
+                {
+                    throw new CartucheraVaciaException();
+                }
             }
         }
 
+
         /// <summary>
-        /// Recorre la lista de ítems de una lista y suma el precio de sus elementos;
+        /// Recorre la lista de ítems de una lista y suma el precio de sus elementos.
         /// </summary>
         /// <returns>Total acumulado</returns>
         private double CalcularPrecioTotal()
         {
             float acum = 0;
-            if (CantidadActual > 0)
+
+            foreach (T item in elementos)
             {
-                foreach (T item in elementos)
-                {
-                    acum += item.Precio;
-                }
+                acum += item.Precio;
             }
-            else
-            {
-                throw new CartucheraVaciaException();
-            }
+
             return acum;
         }
 
@@ -60,10 +60,14 @@ namespace Entidades
         /// <returns>Cartuchera con el útil agregado de tener la capacidad.</returns>
         public static Cartuchera<T> operator +(Cartuchera<T> c, T elemento)
         {
-            if (c.cantidadActual < c.cantidadMaxima)
+            if (c.CantidadActual < c.cantidadMaxima)
             {
                 c.elementos.Add(elemento);
                 c.cantidadActual++;
+                if(c.PrecioTotal > 500)
+                {
+                    c.EventoPrecio.Invoke();
+                }
             }
             else
             {

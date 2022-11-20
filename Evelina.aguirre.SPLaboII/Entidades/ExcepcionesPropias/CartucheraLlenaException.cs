@@ -9,13 +9,10 @@ namespace Entidades.ExcepcionesPropias
     public class CartucheraLlenaException : Exception
     {
         public CartucheraLlenaException() : base()
-        {
-                
+        {      
         }
-
         public CartucheraLlenaException(string mensaje) : base(mensaje)
         {
-
         }
     }
 }
