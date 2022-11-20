@@ -77,14 +77,14 @@ namespace Entidades
             return c;
         }
 
-        public string imprimirElementosCartuchera()
+        public string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Capacidad cartuchera: {this.cantidadMaxima}");
             sb.AppendLine($"Cantidad de elementos: {this.CantidadActual}");
             foreach (Utiles item in this.elementos)
             {
-                item.MostrarDatos();
+                sb.AppendLine(item.MostrarDatos());
             }
             return sb.ToString();
         }

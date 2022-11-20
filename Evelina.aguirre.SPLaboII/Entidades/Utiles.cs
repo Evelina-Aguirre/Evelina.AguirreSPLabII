@@ -22,7 +22,7 @@ namespace Entidades
         public float Precio { get => precio;}
         public string Marca { get => marca;}
 
-        public string MostrarDatos()
+        public virtual string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Elemento: {this.nombre}");
