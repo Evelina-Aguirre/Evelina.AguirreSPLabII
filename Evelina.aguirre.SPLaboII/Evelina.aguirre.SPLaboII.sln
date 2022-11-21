@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{1BC06721-6C23-4932-9BEB-02B46EF5236A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entidades", "Entidades\Entidades.csproj", "{1BC06721-6C23-4932-9BEB-02B46EF5236A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebasUnitarias", "PruebasUnitarias\PruebasUnitarias.csproj", "{FD0D8EB6-B3AF-4960-9DDF-D364B7BC14F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebasUnitarias", "PruebasUnitarias\PruebasUnitarias.csproj", "{FD0D8EB6-B3AF-4960-9DDF-D364B7BC14F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cartuchera", "Cartuchera\Cartuchera.csproj", "{834041E9-3C5C-4F2D-8876-C140853629BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{FD0D8EB6-B3AF-4960-9DDF-D364B7BC14F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD0D8EB6-B3AF-4960-9DDF-D364B7BC14F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD0D8EB6-B3AF-4960-9DDF-D364B7BC14F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{834041E9-3C5C-4F2D-8876-C140853629BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{834041E9-3C5C-4F2D-8876-C140853629BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{834041E9-3C5C-4F2D-8876-C140853629BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{834041E9-3C5C-4F2D-8876-C140853629BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

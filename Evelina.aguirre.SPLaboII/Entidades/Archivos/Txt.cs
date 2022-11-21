@@ -17,9 +17,13 @@ namespace Entidades.Archivos
             path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             path += @"\EvelinaAguirre_Archivos_2C\";
         }
-        public void GuardarDatos(Cartuchera<Utiles> cartuchera)
+
+        /// <summary>
+        /// Guarda los datos de una cartuchera en formato .txt
+        /// </summary>
+        /// <param name="cartuchera"></param>
+        public static void GuardarDatos(Cartuchera<Utiles> cartuchera)
         {
-            //List<string> listaTickets = new List<string>();
             string nombre = path + "Tickets.txt";
             try
             {

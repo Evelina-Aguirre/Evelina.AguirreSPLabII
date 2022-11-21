@@ -4,18 +4,21 @@ using System.Text;
 
 namespace Entidades
 {
-    public delegate void NotificadorSuperaPrecio();
     public class Cartuchera<T> where T : Utiles
     {
+        public delegate void NotificadorSuperaPrecio(Cartuchera<T> cartuchera);
         public event NotificadorSuperaPrecio EventoPrecio;
 
         private int cantidadMaxima;
         private List<T> elementos;
         private int cantidadActual;
 
-        public Cartuchera(int cantidadMaxima, List<T> elementos)
+        public Cartuchera(int cantidadMaxima)
         {
             this.cantidadMaxima = cantidadMaxima;
+        }
+        public Cartuchera(int cantidadMaxima, List<T> elementos):this(cantidadMaxima)
+        {
             this.elementos = elementos;
             this.cantidadActual = 0;
         }
@@ -67,7 +70,7 @@ namespace Entidades
                 c.cantidadActual++;
                 if(c.PrecioTotal > 500)
                 {
-                    c.EventoPrecio.Invoke();
+                    c.EventoPrecio.Invoke(c);
                 }
             }
             else
@@ -77,11 +80,17 @@ namespace Entidades
             return c;
         }
 
+        /// <summary>
+        /// Muestra los datos de una cartuchera.
+        /// </summary>
+        /// <returns></returns>
         public string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Capacidad cartuchera: {this.cantidadMaxima}");
             sb.AppendLine($"Cantidad de elementos: {this.CantidadActual}");
+            sb.AppendLine($"Precio total: {this.PrecioTotal}");
+            sb.AppendLine("\nElementos:");
             foreach (Utiles item in this.elementos)
             {
                 sb.AppendLine(item.MostrarDatos());
