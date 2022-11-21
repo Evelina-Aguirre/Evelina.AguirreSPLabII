@@ -8,9 +8,9 @@ namespace Entidades
     {
         private string nombre;
         private float precio;
-        private string marca;
+        private EMarca marca;
 
-        public Utiles(string nombre, float precio, string marca)
+        public Utiles(string nombre, float precio, EMarca marca)
         {
             this.nombre = nombre;
             this.precio = precio;
@@ -20,7 +20,7 @@ namespace Entidades
         
         public string Nombre { get => nombre;}
         public float Precio { get => precio;}
-        public string Marca { get => marca;}
+        public EMarca Marca { get => marca;}
 
         public virtual string MostrarDatos()
         {

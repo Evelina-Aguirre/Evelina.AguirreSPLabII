@@ -8,12 +8,12 @@ namespace Entidades
 {
     public class Lapiz : Utiles
     {
-        ConsoleColor color;
-        public Lapiz(float precio, string marca) : base("Lapiz",precio, marca)
+        EColor color;
+        public Lapiz(float precio, EMarca marca) : base("Lapiz",precio, marca)
         {
         }
 
-        public Lapiz(float precio, string marca, ConsoleColor color) : this(precio, marca)
+        public Lapiz(float precio, EMarca marca, EColor color) : this(precio, marca)
         {
             this.color = color;
         }

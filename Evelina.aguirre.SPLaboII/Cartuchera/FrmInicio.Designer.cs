@@ -29,61 +29,73 @@ namespace útiles
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.btnNuevaCartuchera = new System.Windows.Forms.Button();
+            this.btnCartuchera = new System.Windows.Forms.Button();
+            this.dgvCartucheras = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.btnEliminarCartuchera = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCartucheras)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnNuevaCartuchera
             // 
-            this.button1.Location = new System.Drawing.Point(26, 35);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 83);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Nueva cartuchera";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnNuevaCartuchera.Location = new System.Drawing.Point(26, 35);
+            this.btnNuevaCartuchera.Name = "btnNuevaCartuchera";
+            this.btnNuevaCartuchera.Size = new System.Drawing.Size(143, 38);
+            this.btnNuevaCartuchera.TabIndex = 0;
+            this.btnNuevaCartuchera.Text = "Nuevo";
+            this.btnNuevaCartuchera.UseVisualStyleBackColor = true;
+            this.btnNuevaCartuchera.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnCartuchera
             // 
-            this.button2.Location = new System.Drawing.Point(26, 140);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(160, 101);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Ver cartucheras";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCartuchera.Location = new System.Drawing.Point(26, 79);
+            this.btnCartuchera.Name = "btnCartuchera";
+            this.btnCartuchera.Size = new System.Drawing.Size(143, 36);
+            this.btnCartuchera.TabIndex = 1;
+            this.btnCartuchera.Text = "Ver";
+            this.btnCartuchera.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // dgvCartucheras
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(229, 35);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 25;
-            this.dataGridView2.Size = new System.Drawing.Size(410, 139);
-            this.dataGridView2.TabIndex = 14;
+            this.dgvCartucheras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCartucheras.Location = new System.Drawing.Point(189, 35);
+            this.dgvCartucheras.Name = "dgvCartucheras";
+            this.dgvCartucheras.RowTemplate.Height = 25;
+            this.dgvCartucheras.Size = new System.Drawing.Size(372, 126);
+            this.dgvCartucheras.TabIndex = 14;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(229, 7);
+            this.label1.Location = new System.Drawing.Point(189, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 15);
             this.label1.TabIndex = 12;
             this.label1.Text = "Mi cartucheras";
             // 
+            // btnEliminarCartuchera
+            // 
+            this.btnEliminarCartuchera.Location = new System.Drawing.Point(26, 121);
+            this.btnEliminarCartuchera.Name = "btnEliminarCartuchera";
+            this.btnEliminarCartuchera.Size = new System.Drawing.Size(143, 36);
+            this.btnEliminarCartuchera.TabIndex = 15;
+            this.btnEliminarCartuchera.Text = "Eliminar";
+            this.btnEliminarCartuchera.UseVisualStyleBackColor = true;
+            // 
             // FrmInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(797, 484);
-            this.Controls.Add(this.dataGridView2);
+            this.ClientSize = new System.Drawing.Size(586, 180);
+            this.Controls.Add(this.btnEliminarCartuchera);
+            this.Controls.Add(this.dgvCartucheras);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCartuchera);
+            this.Controls.Add(this.btnNuevaCartuchera);
             this.Name = "FrmInicio";
             this.Text = "FrmInicio";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCartucheras)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -91,9 +103,10 @@ namespace útiles
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button btnNuevaCartuchera;
+        private System.Windows.Forms.Button btnCartuchera;
+        private System.Windows.Forms.DataGridView dgvCartucheras;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnEliminarCartuchera;
     }
 }

@@ -9,10 +9,10 @@ namespace Entidades
     public class Sacapunta : Utiles
     {
         EMaterial material;
-        public Sacapunta(float precio, string marca) : base("sacapuntas",precio, marca)
+        public Sacapunta(float precio, EMarca marca) : base("sacapuntas",precio, marca)
         {
         }
-        public Sacapunta(EMaterial material,float precio, string marca) : this(precio, marca)
+        public Sacapunta(float precio, EMarca marca, EMaterial material) : this(precio, marca)
         {
             this.material = material;
         }

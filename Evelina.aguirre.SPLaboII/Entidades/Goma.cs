@@ -9,10 +9,10 @@ namespace Entidades
     public class Goma : Utiles
     {
         EPara para;
-        public Goma(float precio, string marca) : base("Goma",precio, marca)
+        public Goma(float precio, EMarca marca) : base("Goma",precio, marca)
         {
         }
-        public Goma(EPara para, float precio, string marca) : this(precio, marca)
+        public Goma(float precio, EMarca marca, EPara para) : this(precio, marca)
         {
             this.para = para;
         }

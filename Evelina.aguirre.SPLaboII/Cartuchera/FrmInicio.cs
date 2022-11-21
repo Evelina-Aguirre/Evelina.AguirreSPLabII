@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FrmCartuchera;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace útiles
         public FrmInicio()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmManenoCartuchera frmCartuchera = new FrmManenoCartuchera();
+            frmCartuchera.Show();
         }
     }
 }
