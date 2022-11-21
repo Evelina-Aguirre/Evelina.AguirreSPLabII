@@ -17,6 +17,8 @@ namespace Entidades
             this.para = para;
         }
 
+        public EPara Para { get => para;}
+
         public override string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();

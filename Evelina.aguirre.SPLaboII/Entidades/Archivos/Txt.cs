@@ -27,6 +27,11 @@ namespace Entidades.Archivos
             string nombre = path + "Tickets.txt";
             try
             {
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
                 StreamWriter sw = new StreamWriter(nombre);
                 sw.Write(cartuchera.MostrarDatos());
                 sw.Close();

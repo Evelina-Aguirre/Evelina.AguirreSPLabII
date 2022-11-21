@@ -17,11 +17,13 @@ namespace Entidades
             this.material = material;
         }
 
+        public EMaterial Material { get => material; }
+
         public override string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(base.MostrarDatos());
-            sb.AppendLine($"Material: {this.material}");
+            sb.AppendLine($"Material: {this.Material}");
             return sb.ToString();
 
         }

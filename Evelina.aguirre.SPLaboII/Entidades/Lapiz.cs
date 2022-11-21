@@ -18,11 +18,13 @@ namespace Entidades
             this.color = color;
         }
 
+        public EColor Color { get => color;}
+
         public override string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(base.MostrarDatos());
-            sb.AppendLine($"Color: {this.color}");
+            sb.Append(base.MostrarDatos());
+            sb.AppendLine($"Color: {this.Color}");
             return sb.ToString();
             
         }
