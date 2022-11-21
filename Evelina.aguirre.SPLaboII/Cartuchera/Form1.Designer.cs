@@ -48,9 +48,9 @@ namespace FrmCartuchera
             this.label6 = new System.Windows.Forms.Label();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.grpCaracteristicas = new System.Windows.Forms.GroupBox();
+            this.lblEError = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.lblEError = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvElementosCartuchera)).BeginInit();
             this.grpCaracteristicas.SuspendLayout();
@@ -58,7 +58,7 @@ namespace FrmCartuchera
             // 
             // btnLapiz
             // 
-            this.btnLapiz.Location = new System.Drawing.Point(395, 32);
+            this.btnLapiz.Location = new System.Drawing.Point(431, 32);
             this.btnLapiz.Name = "btnLapiz";
             this.btnLapiz.Size = new System.Drawing.Size(93, 46);
             this.btnLapiz.TabIndex = 0;
@@ -72,12 +72,12 @@ namespace FrmCartuchera
             this.dgvElementosCartuchera.Location = new System.Drawing.Point(21, 32);
             this.dgvElementosCartuchera.Name = "dgvElementosCartuchera";
             this.dgvElementosCartuchera.RowTemplate.Height = 25;
-            this.dgvElementosCartuchera.Size = new System.Drawing.Size(347, 202);
+            this.dgvElementosCartuchera.Size = new System.Drawing.Size(394, 202);
             this.dgvElementosCartuchera.TabIndex = 1;
             // 
             // btnGoma
             // 
-            this.btnGoma.Location = new System.Drawing.Point(395, 84);
+            this.btnGoma.Location = new System.Drawing.Point(431, 84);
             this.btnGoma.Name = "btnGoma";
             this.btnGoma.Size = new System.Drawing.Size(93, 46);
             this.btnGoma.TabIndex = 2;
@@ -87,7 +87,7 @@ namespace FrmCartuchera
             // 
             // btnSacapuntas
             // 
-            this.btnSacapuntas.Location = new System.Drawing.Point(395, 136);
+            this.btnSacapuntas.Location = new System.Drawing.Point(431, 136);
             this.btnSacapuntas.Name = "btnSacapuntas";
             this.btnSacapuntas.Size = new System.Drawing.Size(93, 46);
             this.btnSacapuntas.TabIndex = 3;
@@ -97,7 +97,7 @@ namespace FrmCartuchera
             // 
             // btnQuitar
             // 
-            this.btnQuitar.Location = new System.Drawing.Point(395, 188);
+            this.btnQuitar.Location = new System.Drawing.Point(431, 188);
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(93, 46);
             this.btnQuitar.TabIndex = 4;
@@ -107,7 +107,7 @@ namespace FrmCartuchera
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(395, 14);
+            this.label2.Location = new System.Drawing.Point(431, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 15);
             this.label2.TabIndex = 6;
@@ -142,7 +142,7 @@ namespace FrmCartuchera
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(569, 247);
+            this.btnSalir.Location = new System.Drawing.Point(605, 247);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(204, 27);
             this.btnSalir.TabIndex = 13;
@@ -152,7 +152,7 @@ namespace FrmCartuchera
             // cmbMarca
             // 
             this.cmbMarca.FormattingEnabled = true;
-            this.cmbMarca.Location = new System.Drawing.Point(605, 69);
+            this.cmbMarca.Location = new System.Drawing.Point(641, 69);
             this.cmbMarca.Name = "cmbMarca";
             this.cmbMarca.Size = new System.Drawing.Size(145, 23);
             this.cmbMarca.TabIndex = 14;
@@ -160,7 +160,7 @@ namespace FrmCartuchera
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(521, 72);
+            this.label4.Location = new System.Drawing.Point(557, 72);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 15);
             this.label4.TabIndex = 16;
@@ -217,12 +217,23 @@ namespace FrmCartuchera
             this.grpCaracteristicas.Controls.Add(this.label6);
             this.grpCaracteristicas.Controls.Add(this.txtPrecio);
             this.grpCaracteristicas.Controls.Add(this.btnAgregar);
-            this.grpCaracteristicas.Location = new System.Drawing.Point(506, 32);
+            this.grpCaracteristicas.Location = new System.Drawing.Point(542, 32);
             this.grpCaracteristicas.Name = "grpCaracteristicas";
             this.grpCaracteristicas.Size = new System.Drawing.Size(267, 202);
             this.grpCaracteristicas.TabIndex = 22;
             this.grpCaracteristicas.TabStop = false;
             this.grpCaracteristicas.Text = "Lapiz";
+            // 
+            // lblEError
+            // 
+            this.lblEError.AutoSize = true;
+            this.lblEError.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblEError.Location = new System.Drawing.Point(19, 129);
+            this.lblEError.Name = "lblEError";
+            this.lblEError.Size = new System.Drawing.Size(91, 15);
+            this.lblEError.TabIndex = 22;
+            this.lblEError.Text = "                            ";
+            this.lblEError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // button1
             // 
@@ -242,17 +253,6 @@ namespace FrmCartuchera
             this.button2.Text = "Exportar Lapiz JSon";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // lblEError
-            // 
-            this.lblEError.AutoSize = true;
-            this.lblEError.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblEError.Location = new System.Drawing.Point(144, 129);
-            this.lblEError.Name = "lblEError";
-            this.lblEError.Size = new System.Drawing.Size(91, 15);
-            this.lblEError.TabIndex = 22;
-            this.lblEError.Text = "                            ";
-            this.lblEError.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // timer1
             // 
             this.timer1.Interval = 3000;
@@ -262,7 +262,7 @@ namespace FrmCartuchera
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 288);
+            this.ClientSize = new System.Drawing.Size(830, 288);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label4);

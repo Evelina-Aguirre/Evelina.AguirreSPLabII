@@ -8,16 +8,12 @@ namespace Entidades
 {
     public class Goma : Utiles
     {
-        EPara para;
-        public Goma(float precio, EMarca marca) : base("Goma",precio, marca)
+        private string para;
+        public Goma(float precio, EMarca marca, string para) : base("Goma",precio, marca, para)
         {
         }
-        public Goma(float precio, EMarca marca, EPara para) : this(precio, marca)
-        {
-            this.para = para;
-        }
-
-        public EPara Para { get => para;}
+      
+        public string Para { get => para;}
 
         public override string MostrarDatos()
         {

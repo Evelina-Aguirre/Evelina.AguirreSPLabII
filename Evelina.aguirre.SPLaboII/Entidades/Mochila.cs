@@ -25,8 +25,8 @@ namespace Entidades
             Cartuchera<Utiles> cartuchera1 = new Cartuchera<Utiles>(10);
            // Cartuchera<Utiles> cartuchera2 = new Cartuchera<Utiles>(20);
 
-            Utiles l1 = new Lapiz(100,EMarca.sonMuyUtiles, EColor.Amarillo);
-            Utiles l2 = new Lapiz(80, EMarca.UtilGenerico, EColor.Rojo);
+            Utiles l1 = new Lapiz(100,EMarca.sonMuyUtiles, EColor.Amarillo.ToString());
+            Utiles l2 = new Lapiz(80, EMarca.UtilGenerico, EColor.Rojo.ToString());
             //Utiles l3 = new Lapiz(150, EMarca.MisUtiles, EColor.Gris);
             //Utiles g1 = new Goma(30, EMarca.sonMuyUtiles, EPara.Lapiz_Tinta);
             //Utiles g2 = new Goma(20, EMarca.MisUtiles, EPara.Lapiz);
@@ -59,12 +59,12 @@ namespace Entidades
         {
             Cartuchera<Utiles> cartuchera3 = new Cartuchera<Utiles>(10);
 
-            Utiles l1 = new Lapiz(100, EMarca.sonMuyUtiles, EColor.Amarillo);
-            Utiles l2 = new Lapiz(80, EMarca.UtilGenerico, EColor.Rojo);
-            Utiles l3 = new Lapiz(150, EMarca.MisUtiles, EColor.Gris);
-            Utiles g1 = new Goma(30, EMarca.sonMuyUtiles, EPara.Lapiz_Tinta);
-            Utiles g2 = new Goma(20, EMarca.MisUtiles, EPara.Lapiz);
-            Utiles s1 = new Sacapunta(50, EMarca.MisUtiles, EMaterial.Metal);
+            Utiles l1 = new Lapiz(100, EMarca.sonMuyUtiles, EColor.Amarillo.ToString());
+            Utiles l2 = new Lapiz(80, EMarca.UtilGenerico, EColor.Rojo.ToString());
+            Utiles l3 = new Lapiz(150, EMarca.MisUtiles, EColor.Gris.ToString());
+            Utiles g1 = new Goma(30, EMarca.sonMuyUtiles, EPara.Lapiz_Tinta.ToString());
+            Utiles g2 = new Goma(20, EMarca.MisUtiles, EPara.Solo_Lapiz.ToString());
+            Utiles s1 = new Sacapunta(50, EMarca.MisUtiles, EMaterial.Metal.ToString());
 
             cartuchera3 += l1;
             cartuchera3 += l2;

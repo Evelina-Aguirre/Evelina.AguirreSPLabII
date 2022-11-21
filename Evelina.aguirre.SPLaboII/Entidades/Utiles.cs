@@ -9,20 +9,21 @@ namespace Entidades
         private string nombre;
         private float precio;
         private EMarca marca;
+        string caracteristica;
 
-        public Utiles(string nombre, float precio, EMarca marca)
+        public Utiles(string nombre, float precio, EMarca marca, string caracteristica)
         {
             this.nombre = nombre;
             this.precio = precio;
             this.marca = marca;
-           // this.caraccteristicaParticular = caraccteristicaParticular;
+            this.caracteristica = caracteristica;
         }
 
         
         public string Nombre { get => nombre;}
         public float Precio { get => precio;}
         public EMarca Marca { get => marca;}
-        //public T CaraccteristicaParticular { get => caraccteristicaParticular; }
+        public string Caracteristica { get => caracteristica;}
 
         public virtual string MostrarDatos()
         {

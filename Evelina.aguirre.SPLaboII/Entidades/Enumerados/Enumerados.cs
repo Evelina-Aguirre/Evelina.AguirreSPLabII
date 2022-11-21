@@ -6,7 +6,7 @@
 
 public enum EPara
 {
-    Lapiz,
+    Solo_Lapiz,
     Lapiz_Tinta
 }
 
@@ -29,4 +29,11 @@ public enum EColor
     Azul,
     Celeste
 
+}
+
+public enum Ecaracteristica
+{
+    Para,
+    Material,
+    Color
 }

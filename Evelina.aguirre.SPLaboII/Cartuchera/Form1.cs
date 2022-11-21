@@ -45,6 +45,7 @@ namespace FrmCartuchera
             btnAgregar.Enabled = true;
             cmbMarca.Enabled = true;
             cmbParticular.Enabled = true;
+            txtPrecio.Enabled = true;
             grpCaracteristicas.Text = " Goma ";
             lblParticular.Text = "Para";
             cmbParticular.DataSource = System.Enum.GetValues(typeof(EPara));
@@ -55,6 +56,7 @@ namespace FrmCartuchera
             btnAgregar.Enabled = true;
             cmbMarca.Enabled = true;
             cmbParticular.Enabled = true;
+            txtPrecio.Enabled = true;
             grpCaracteristicas.Text = " Sacapuntas ";
             lblParticular.Text = "Material";
             cmbParticular.DataSource = System.Enum.GetValues(typeof(EMaterial));
@@ -75,19 +77,18 @@ namespace FrmCartuchera
                     Utiles util;
                     if (grpCaracteristicas.Text == " Lapiz ")
                     {
-                        util = new Lapiz(Convert.ToInt32(txtPrecio.Text), (EMarca)Enum.Parse(typeof(EMarca), cmbMarca.Text),
-                            (EColor)Enum.Parse(typeof(EColor), cmbParticular.Text));
+                        util = new Lapiz(float.Parse(txtPrecio.Text), (EMarca)Enum.Parse(typeof(EMarca), cmbMarca.Text),cmbParticular.Text);
 
                     }
                     else if (grpCaracteristicas.Text == " Goma ")
                     {
-                        util = new Goma(Convert.ToInt32(txtPrecio.Text), (EMarca)Enum.Parse(typeof(EMarca), cmbMarca.Text),
-                            (EPara)Enum.Parse(typeof(EPara), cmbParticular.Text));
+                        util = new Goma(float.Parse(txtPrecio.Text), (EMarca)Enum.Parse(typeof(EMarca), cmbMarca.Text),
+                            cmbParticular.Text);
                     }
                     else
                     {
-                        util = new Sacapunta(Convert.ToInt32(txtPrecio.Text), (EMarca)Enum.Parse(typeof(EMarca), cmbMarca.Text),
-                            (EMaterial)Enum.Parse(typeof(EMaterial), cmbParticular.Text));
+                        util = new Sacapunta(float.Parse(txtPrecio.Text), (EMarca)Enum.Parse(typeof(EMarca), cmbMarca.Text),
+                             cmbParticular.Text);
                     }
 
                     //Intenta agregar ese elemento a la cartuchera e invoca el evento que imprime tiket en .txt
@@ -103,6 +104,16 @@ namespace FrmCartuchera
                     {
                         MessageBox.Show("No se pudo agregar el elemento\n" + ex.Message);
                     }
+
+                    //deshabilita la posibilidad de mofificar sin saber qué elemento será.
+                    cmbMarca.Enabled = false;
+                    cmbParticular.Enabled = false;
+                    txtPrecio.Enabled = false;
+                    btnAgregar.Enabled = false;
+
+                    //agrega el nuevo elemento a al dgv
+                    dgvElementosCartuchera.DataSource = null;
+                    dgvElementosCartuchera.DataSource = Mochila.Cartucheras[0].Elementos;
                 }
                 else if (txtPrecio.Text == null || !esNumero)
                 {
@@ -111,20 +122,16 @@ namespace FrmCartuchera
             }
             catch (MontoInvalidoException ex)
             {
-                this.txtPrecio.Text =ex.Message;
+                this.lblEError.Text =ex.Message;
                 timer1.Interval = 3000;
                 timer1.Start();
             }
-
-
-            //agrega el nuevo elemento a al dgv
-            dgvElementosCartuchera.DataSource = null;
-            dgvElementosCartuchera.DataSource = Mochila.Cartucheras[0].Elementos;
-            //deshabilita la posibilidad de mofificar sin saber qué elemento será.
-            cmbMarca.Enabled = false;
-            cmbParticular.Enabled = false;
-            txtPrecio.Enabled = false;
-            btnAgregar.Enabled = false;
+            catch(Exception ex)
+            {
+                this.lblEError.Text = ex.Message;
+                timer1.Interval = 3000;
+                timer1.Start();
+            }
 
         }
 

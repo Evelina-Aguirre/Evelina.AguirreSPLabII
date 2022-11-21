@@ -8,18 +8,19 @@ namespace Entidades
 {
     public class Lapiz : Utiles
     {
-        EColor color;
-        public Lapiz(float precio, EMarca marca) : base("Lapiz",precio, marca)
-        {
-        }
-
-        public Lapiz(float precio, EMarca marca, EColor color) : this(precio, marca)
+        private string color;
+        public Lapiz(float precio, EMarca marca, string color) : base("Lapiz",precio, marca, color)
         {
             this.color = color;
         }
 
-        public EColor Color { get => color;}
+        public string Color { get => color; }
 
+        private static string caracteristicaString(EColor color)
+        {
+            string aux = color.ToString();
+            return aux;
+        }
         public override string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
