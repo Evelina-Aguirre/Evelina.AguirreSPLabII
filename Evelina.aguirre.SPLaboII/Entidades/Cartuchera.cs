@@ -1,5 +1,4 @@
 ﻿using Entidades.ExcepcionesPropias;
-using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,20 +15,15 @@ namespace Entidades
 
         public Cartuchera(int cantidadMaxima)
         {
-            this.elementos = new List<T>();
+            elementos = new List<T>();
             this.cantidadMaxima = cantidadMaxima;
-            this.cantidadActual = 0;
+            cantidadActual = 0;
         }
-        //public Cartuchera(int cantidadMaxima, List<T> elementos):this(cantidadMaxima)
-        //{
-        //    this.elementos = elementos;
-        //    this.cantidadActual = 0;
-        //}
 
         public List<T> Elementos { get => elementos; set => elementos = value; }
         public int CantidadActual { get => cantidadActual; }
-        
-        
+
+
         public float PrecioTotal
         {
             get
@@ -38,14 +32,10 @@ namespace Entidades
                 {
                     return (float)CalcularPrecioTotal();
                 }
-                //else if(CantidadActual ==0)
-                //{
-                    return 0;
-                    //throw new CartucheraVaciaException();
-                //}
-            }        }
 
-
+                return 0;
+            }
+        }
 
         /// <summary>
         /// Recorre la lista de ítems de una lista y suma el precio de sus elementos.
@@ -75,7 +65,7 @@ namespace Entidades
             {
                 c.elementos.Add(elemento);
                 c.cantidadActual++;
-                if(c.PrecioTotal > 500)
+                if (c.PrecioTotal > 500)
                 {
                     c.EventoPrecio.Invoke(c);
                 }
@@ -94,12 +84,12 @@ namespace Entidades
         public string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Capacidad cartuchera: {this.cantidadMaxima}");
-            sb.AppendLine($"Cantidad de elementos: {this.CantidadActual}");
-            sb.AppendLine($"Precio total: {this.PrecioTotal}\n");
+            sb.AppendLine($"Capacidad cartuchera: {cantidadMaxima}");
+            sb.AppendLine($"Cantidad de elementos: {CantidadActual}");
+            sb.AppendLine($"Precio total: {PrecioTotal}\n");
             sb.AppendLine("------------------------- ");
             sb.AppendLine("Elementos:");
-            foreach (Utiles item in this.Elementos)
+            foreach (Utiles item in Elementos)
             {
                 sb.AppendLine(item.MostrarDatos());
             }

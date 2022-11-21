@@ -41,6 +41,7 @@ namespace Entidades.Archivos
                 throw new ErrorAlIntentarEscribirArchivoException("No se pudo escribir el archivo.");
             }
             
+        
         }
 
         //public List<Utiles> LeerDatos()

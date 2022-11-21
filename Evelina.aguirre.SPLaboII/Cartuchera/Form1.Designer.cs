@@ -29,6 +29,7 @@ namespace FrmCartuchera
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnLapiz = new System.Windows.Forms.Button();
             this.dgvElementosCartuchera = new System.Windows.Forms.DataGridView();
             this.btnGoma = new System.Windows.Forms.Button();
@@ -49,6 +50,8 @@ namespace FrmCartuchera
             this.grpCaracteristicas = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.lblEError = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvElementosCartuchera)).BeginInit();
             this.grpCaracteristicas.SuspendLayout();
             this.SuspendLayout();
@@ -208,6 +211,7 @@ namespace FrmCartuchera
             // 
             // grpCaracteristicas
             // 
+            this.grpCaracteristicas.Controls.Add(this.lblEError);
             this.grpCaracteristicas.Controls.Add(this.lblParticular);
             this.grpCaracteristicas.Controls.Add(this.cmbParticular);
             this.grpCaracteristicas.Controls.Add(this.label6);
@@ -237,6 +241,22 @@ namespace FrmCartuchera
             this.button2.TabIndex = 23;
             this.button2.Text = "Exportar Lapiz JSon";
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // lblEError
+            // 
+            this.lblEError.AutoSize = true;
+            this.lblEError.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblEError.Location = new System.Drawing.Point(144, 129);
+            this.lblEError.Name = "lblEError";
+            this.lblEError.Size = new System.Drawing.Size(91, 15);
+            this.lblEError.TabIndex = 22;
+            this.lblEError.Text = "                            ";
+            this.lblEError.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 3000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FrmManenoCartuchera
             // 
@@ -292,5 +312,7 @@ namespace FrmCartuchera
         private System.Windows.Forms.GroupBox grpCaracteristicas;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label lblEError;
+        private System.Windows.Forms.Timer timer1;
     }
 }

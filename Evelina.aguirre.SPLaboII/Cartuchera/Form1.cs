@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Entidades;
+﻿using Entidades;
 using Entidades.Archivos;
 using Entidades.ExcepcionesPropias;
+using System;
+using System.Windows.Forms;
 
 namespace FrmCartuchera
 {
-    public partial class FrmManenoCartuchera: Form
+    public partial class FrmManenoCartuchera : Form
     {
-       
+
         public FrmManenoCartuchera()
         {
             InitializeComponent();
@@ -31,6 +24,7 @@ namespace FrmCartuchera
             cmbMarca.Enabled = false;
             cmbParticular.Enabled = false;
             txtPrecio.Enabled = false;
+            btnAgregar.Enabled = false;
         }
 
         private void btnLapiz_Click(object sender, EventArgs e)
@@ -42,11 +36,15 @@ namespace FrmCartuchera
             txtPrecio.Enabled = true;
             grpCaracteristicas.Text = " Lapiz ";
             lblParticular.Text = "Color";
+            btnAgregar.Enabled = true;
 
         }
 
         private void btnGoma_Click(object sender, EventArgs e)
         {
+            btnAgregar.Enabled = true;
+            cmbMarca.Enabled = true;
+            cmbParticular.Enabled = true;
             grpCaracteristicas.Text = " Goma ";
             lblParticular.Text = "Para";
             cmbParticular.DataSource = System.Enum.GetValues(typeof(EPara));
@@ -54,6 +52,9 @@ namespace FrmCartuchera
 
         private void btnSacapuntas_Click(object sender, EventArgs e)
         {
+            btnAgregar.Enabled = true;
+            cmbMarca.Enabled = true;
+            cmbParticular.Enabled = true;
             grpCaracteristicas.Text = " Sacapuntas ";
             lblParticular.Text = "Material";
             cmbParticular.DataSource = System.Enum.GetValues(typeof(EMaterial));
@@ -61,42 +62,76 @@ namespace FrmCartuchera
 
         private void button7_Click(object sender, EventArgs e)
         {
+            float precio;
+            string txtConComa = txtPrecio.Text.Replace('.', ',');
+            txtPrecio.Text = txtConComa;
+            bool esNumero = float.TryParse(txtPrecio.Text, out precio);
+
+            try
+            {    //si el monto ingresado es valido
+                if (txtPrecio.Text != null && esNumero)
+                {
+                    //Se instancia un lapiz/goma/sacapunta según corresponda
+                    Utiles util;
+                    if (grpCaracteristicas.Text == " Lapiz ")
+                    {
+                        util = new Lapiz(Convert.ToInt32(txtPrecio.Text), (EMarca)Enum.Parse(typeof(EMarca), cmbMarca.Text),
+                            (EColor)Enum.Parse(typeof(EColor), cmbParticular.Text));
+
+                    }
+                    else if (grpCaracteristicas.Text == " Goma ")
+                    {
+                        util = new Goma(Convert.ToInt32(txtPrecio.Text), (EMarca)Enum.Parse(typeof(EMarca), cmbMarca.Text),
+                            (EPara)Enum.Parse(typeof(EPara), cmbParticular.Text));
+                    }
+                    else
+                    {
+                        util = new Sacapunta(Convert.ToInt32(txtPrecio.Text), (EMarca)Enum.Parse(typeof(EMarca), cmbMarca.Text),
+                            (EMaterial)Enum.Parse(typeof(EMaterial), cmbParticular.Text));
+                    }
+
+                    //Intenta agregar ese elemento a la cartuchera e invoca el evento que imprime tiket en .txt
+                    try
+                    {
+                        Mochila.Cartucheras[0] += util;
+                    }
+                    catch (CartucheraLlenaException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("No se pudo agregar el elemento\n" + ex.Message);
+                    }
+                }
+                else if (txtPrecio.Text == null || !esNumero)
+                {
+                    throw new MontoInvalidoException("Debe ingresar un valor numérico");
+                }
+            }
+            catch (MontoInvalidoException ex)
+            {
+                this.txtPrecio.Text =ex.Message;
+                timer1.Interval = 3000;
+                timer1.Start();
+            }
+
+
+            //agrega el nuevo elemento a al dgv
+            dgvElementosCartuchera.DataSource = null;
+            dgvElementosCartuchera.DataSource = Mochila.Cartucheras[0].Elementos;
+            //deshabilita la posibilidad de mofificar sin saber qué elemento será.
             cmbMarca.Enabled = false;
             cmbParticular.Enabled = false;
             txtPrecio.Enabled = false;
-            Utiles util;
-            if (grpCaracteristicas.Text == " Lapiz ")
-            {
-             util = new Lapiz(Convert.ToInt32(txtPrecio.Text), (EMarca)Enum.Parse(typeof(EMarca),this.cmbMarca.Text), (EColor)Enum.Parse(typeof(EColor), this.cmbParticular.Text));
+            btnAgregar.Enabled = false;
 
-            }else if(grpCaracteristicas.Text == " Goma ")
-            {
-                 util = new Goma(Convert.ToInt32(txtPrecio.Text), (EMarca)Enum.Parse(typeof(EMarca), this.cmbMarca.Text), (EPara)Enum.Parse(typeof(EPara), this.cmbParticular.Text));
+        }
 
-            }
-            else
-            {
-                util = new Sacapunta(Convert.ToInt32(txtPrecio.Text), (EMarca)Enum.Parse(typeof(EMarca), this.cmbMarca.Text), (EMaterial)Enum.Parse(typeof(EMaterial), this.cmbParticular.Text));
-            }
-
-            try
-            {
-
-            Mochila.Cartucheras[0] += util;
-            }catch(CartucheraLlenaException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("No se pudo agregar el elemento\n" + ex.Message);
-            }
-
-            this.dgvElementosCartuchera.DataSource = null;
-            this.dgvElementosCartuchera.DataSource = Mochila.Cartucheras[0].Elementos;
-
-
-
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblEError.Text = "";
+            timer1.Stop();
         }
     }
 }
