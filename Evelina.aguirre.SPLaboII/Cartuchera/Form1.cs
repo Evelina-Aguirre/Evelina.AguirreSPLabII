@@ -197,12 +197,34 @@ namespace FrmCartuchera
 
         private void btnQuitar_Click(object sender, EventArgs e)
         {
-            //Boton de prueba
-            //Lapiz lapiz = new Lapiz(0, EMarca.SonMuyUtiles, "Blanco");
-            //ConexionDB.cargaTablaCartucheraEnDB(lapiz);
+            
+           
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)//13 es el ASCII para la tecla Enter
+            {
+                //le informo que el evento (hacer sonido por no poder dar un salto de linea en un textBox)
+                //ya fue manejado para que no lo reproduzca.
+                e.Handled = true;
+                btnAgregar.PerformClick();
+            }
+        }
+
+        private void btnCargarDesdeDB_Click(object sender, EventArgs e)
+        {
             Cartuchera<Utiles> cartucheraAux = new Cartuchera<Utiles>(10);
             cartucheraAux = ConexionDB.TraeDatosDeUnaCartucheraDesdeDB();
             this.dgvElementosCartuchera.DataSource = cartucheraAux.Elementos;
+        }
+
+        private void btnGuardarCambios_Click(object sender, EventArgs e)
+        {
+            foreach (Utiles item in Mochila.Cartucheras[0].Elementos)
+            {
+                ConexionDB.AgregaElementoEnDB(item);
+            }
         }
 
         private void FrmManenoCartuchera_MouseUp(object sender, MouseEventArgs e)

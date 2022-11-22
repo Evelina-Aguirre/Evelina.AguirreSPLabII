@@ -30,9 +30,9 @@ namespace FrmCartuchera
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnLapiz = new System.Windows.Forms.Button();
             this.dgvElementosCartuchera = new System.Windows.Forms.DataGridView();
             this.btnGoma = new System.Windows.Forms.Button();
@@ -56,7 +56,8 @@ namespace FrmCartuchera
             this.btnLeerJson = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnCargarDesdeDB = new System.Windows.Forms.Button();
+            this.btnGuardarCambios = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvElementosCartuchera)).BeginInit();
             this.grpCaracteristicas.SuspendLayout();
             this.SuspendLayout();
@@ -81,36 +82,36 @@ namespace FrmCartuchera
             this.dgvElementosCartuchera.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvElementosCartuchera.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvElementosCartuchera.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(104)))), ((int)(((byte)(202)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(104)))), ((int)(((byte)(202)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvElementosCartuchera.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(104)))), ((int)(((byte)(202)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(104)))), ((int)(((byte)(202)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvElementosCartuchera.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvElementosCartuchera.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(157)))), ((int)(((byte)(216)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(102)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvElementosCartuchera.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(157)))), ((int)(((byte)(216)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(102)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvElementosCartuchera.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvElementosCartuchera.EnableHeadersVisualStyles = false;
             this.dgvElementosCartuchera.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(205)))), ((int)(((byte)(235)))));
             this.dgvElementosCartuchera.Location = new System.Drawing.Point(21, 32);
             this.dgvElementosCartuchera.Name = "dgvElementosCartuchera";
             this.dgvElementosCartuchera.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(170)))), ((int)(((byte)(221)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(129)))), ((int)(((byte)(203)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvElementosCartuchera.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(170)))), ((int)(((byte)(221)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(129)))), ((int)(((byte)(203)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvElementosCartuchera.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvElementosCartuchera.RowHeadersVisible = false;
             this.dgvElementosCartuchera.RowTemplate.Height = 25;
             this.dgvElementosCartuchera.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -177,7 +178,7 @@ namespace FrmCartuchera
             this.btnExportarJson.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnExportarJson.Location = new System.Drawing.Point(21, 239);
             this.btnExportarJson.Name = "btnExportarJson";
-            this.btnExportarJson.Size = new System.Drawing.Size(91, 55);
+            this.btnExportarJson.Size = new System.Drawing.Size(87, 55);
             this.btnExportarJson.TabIndex = 7;
             this.btnExportarJson.Text = "Exportar Lapiz JSon";
             this.btnExportarJson.UseVisualStyleBackColor = false;
@@ -189,9 +190,9 @@ namespace FrmCartuchera
             this.btnExpotarLapiz.FlatAppearance.BorderSize = 0;
             this.btnExpotarLapiz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExpotarLapiz.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnExpotarLapiz.Location = new System.Drawing.Point(122, 239);
+            this.btnExpotarLapiz.Location = new System.Drawing.Point(126, 239);
             this.btnExpotarLapiz.Name = "btnExpotarLapiz";
-            this.btnExpotarLapiz.Size = new System.Drawing.Size(89, 55);
+            this.btnExpotarLapiz.Size = new System.Drawing.Size(85, 55);
             this.btnExpotarLapiz.TabIndex = 8;
             this.btnExpotarLapiz.Text = "Exportar Lapiz Xml";
             this.btnExpotarLapiz.UseVisualStyleBackColor = false;
@@ -213,9 +214,9 @@ namespace FrmCartuchera
             this.btnSalir.FlatAppearance.BorderSize = 0;
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalir.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSalir.Location = new System.Drawing.Point(605, 280);
+            this.btnSalir.Location = new System.Drawing.Point(693, 310);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(204, 27);
+            this.btnSalir.Size = new System.Drawing.Size(116, 27);
             this.btnSalir.TabIndex = 13;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = false;
@@ -263,6 +264,7 @@ namespace FrmCartuchera
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(145, 23);
             this.txtPrecio.TabIndex = 19;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // label6
             // 
@@ -321,9 +323,9 @@ namespace FrmCartuchera
             this.btnLeerXml.FlatAppearance.BorderSize = 0;
             this.btnLeerXml.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLeerXml.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLeerXml.Location = new System.Drawing.Point(325, 238);
+            this.btnLeerXml.Location = new System.Drawing.Point(331, 238);
             this.btnLeerXml.Name = "btnLeerXml";
-            this.btnLeerXml.Size = new System.Drawing.Size(90, 56);
+            this.btnLeerXml.Size = new System.Drawing.Size(84, 56);
             this.btnLeerXml.TabIndex = 24;
             this.btnLeerXml.Text = "Leer Lapiz Xml";
             this.btnLeerXml.UseVisualStyleBackColor = false;
@@ -335,9 +337,9 @@ namespace FrmCartuchera
             this.btnLeerJson.FlatAppearance.BorderSize = 0;
             this.btnLeerJson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLeerJson.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLeerJson.Location = new System.Drawing.Point(221, 239);
+            this.btnLeerJson.Location = new System.Drawing.Point(231, 239);
             this.btnLeerJson.Name = "btnLeerJson";
-            this.btnLeerJson.Size = new System.Drawing.Size(92, 55);
+            this.btnLeerJson.Size = new System.Drawing.Size(79, 55);
             this.btnLeerJson.TabIndex = 23;
             this.btnLeerJson.Text = "Leer Lapiz JSon";
             this.btnLeerJson.UseVisualStyleBackColor = false;
@@ -359,26 +361,42 @@ namespace FrmCartuchera
             this.label1.Text = "                  ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // button3
+            // btnCargarDesdeDB
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(157)))), ((int)(((byte)(216)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(605, 247);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(204, 27);
-            this.button3.TabIndex = 26;
-            this.button3.Text = "Guardar todo";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnCargarDesdeDB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(157)))), ((int)(((byte)(216)))));
+            this.btnCargarDesdeDB.FlatAppearance.BorderSize = 0;
+            this.btnCargarDesdeDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCargarDesdeDB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCargarDesdeDB.Location = new System.Drawing.Point(21, 310);
+            this.btnCargarDesdeDB.Name = "btnCargarDesdeDB";
+            this.btnCargarDesdeDB.Size = new System.Drawing.Size(190, 27);
+            this.btnCargarDesdeDB.TabIndex = 26;
+            this.btnCargarDesdeDB.Text = "Cargar desde DB";
+            this.btnCargarDesdeDB.UseVisualStyleBackColor = false;
+            this.btnCargarDesdeDB.Click += new System.EventHandler(this.btnCargarDesdeDB_Click);
+            // 
+            // btnGuardarCambios
+            // 
+            this.btnGuardarCambios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(157)))), ((int)(((byte)(216)))));
+            this.btnGuardarCambios.FlatAppearance.BorderSize = 0;
+            this.btnGuardarCambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarCambios.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnGuardarCambios.Location = new System.Drawing.Point(231, 310);
+            this.btnGuardarCambios.Name = "btnGuardarCambios";
+            this.btnGuardarCambios.Size = new System.Drawing.Size(184, 27);
+            this.btnGuardarCambios.TabIndex = 27;
+            this.btnGuardarCambios.Text = "Guardar cambios";
+            this.btnGuardarCambios.UseVisualStyleBackColor = false;
+            this.btnGuardarCambios.Click += new System.EventHandler(this.btnGuardarCambios_Click);
             // 
             // FrmManenoCartuchera
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(219)))));
-            this.ClientSize = new System.Drawing.Size(835, 322);
-            this.Controls.Add(this.button3);
+            this.ClientSize = new System.Drawing.Size(835, 356);
+            this.Controls.Add(this.btnGuardarCambios);
+            this.Controls.Add(this.btnCargarDesdeDB);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLeerXml);
             this.Controls.Add(this.btnLeerJson);
@@ -436,6 +454,7 @@ namespace FrmCartuchera
         private System.Windows.Forms.Label lblEError;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnCargarDesdeDB;
+        private System.Windows.Forms.Button btnGuardarCambios;
     }
 }

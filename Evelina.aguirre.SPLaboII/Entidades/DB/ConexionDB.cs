@@ -22,7 +22,7 @@ namespace Entidades.DB
             comando.Connection = conexion;
         }
 
-        public static void cargaTablaCartucheraEnDB(Utiles util)
+        public static void AgregaElementoEnDB(Utiles util)
         {
             string consulta = $"Insert into Elementos";
             SqlConnection conexion = new SqlConnection(conexionString);
@@ -72,16 +72,16 @@ namespace Entidades.DB
                     }
                     else if (dataReader["Nombre"].ToString() == "GOMA")
                     {
-                        elemento = new Goma();
-                        elemento.Precio = (float)(dataReader["Precio"]);
+                        elemento = new Goma(0, EMarca.MisUtiles, "");
+                        elemento.Precio = float.Parse(dataReader["Precio"].ToString());
                         elemento.Marca = (EMarca)Enum.Parse(typeof(EMarca), dataReader["Marca"].ToString());
                         elemento.Caracteristica = dataReader["Caracteristica"].ToString();
                         cartuchera.Elementos.Add(elemento);
                     }
                     else
                     {
-                        elemento = new Sacapunta();
-                        elemento.Precio = (float)(dataReader["Precio"]);
+                        elemento = new Sacapunta(0, EMarca.MisUtiles, "");
+                        elemento.Precio = float.Parse(dataReader["Precio"].ToString());
                         elemento.Marca = (EMarca)Enum.Parse(typeof(EMarca), dataReader["Marca"].ToString());
                         elemento.Caracteristica = dataReader["Caracteristica"].ToString();
                         cartuchera.Elementos.Add(elemento);
