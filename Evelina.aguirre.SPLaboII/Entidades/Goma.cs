@@ -8,18 +8,15 @@ namespace Entidades
 {
     public class Goma : Utiles
     {
-        private string para;
-        public Goma(float precio, EMarca marca, string para) : base("Goma",precio, marca, para)
+        public Goma(float precio, EMarca marca, string para) : base("GOMA",precio, marca, para)
         {
         }
       
-        public string Para { get => para;}
-
         public override string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(base.MostrarDatos());
-            sb.AppendLine($"Es para: {this.para}");
+            sb.Append(base.MostrarDatos());
+            sb.AppendLine($"Utilidad: {base.Caracteristica}");
             return sb.ToString();
 
         }

@@ -18,6 +18,7 @@ namespace FrmCartuchera
         {
             Mochila.Cartucheras[0].EventoPrecio += Txt.GuardarDatos;
 
+            cmbMarca.DataSource = System.Enum.GetValues(typeof(EMarca));
             dgvElementosCartuchera.DataSource = Mochila.Cartucheras[0].Elementos;
             grpCaracteristicas.Text = " Elemento ";
             lblParticular.Text = "Color";
@@ -30,14 +31,12 @@ namespace FrmCartuchera
         private void btnLapiz_Click(object sender, EventArgs e)
         {
             cmbMarca.Enabled = true;
-            cmbMarca.DataSource = System.Enum.GetValues(typeof(EMarca));
             cmbParticular.Enabled = true;
             cmbParticular.DataSource = System.Enum.GetValues(typeof(EColor));
             txtPrecio.Enabled = true;
             grpCaracteristicas.Text = " Lapiz ";
             lblParticular.Text = "Color";
             btnAgregar.Enabled = true;
-
         }
 
         private void btnGoma_Click(object sender, EventArgs e)
@@ -139,6 +138,39 @@ namespace FrmCartuchera
         {
             lblEError.Text = "";
             timer1.Stop();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnExportarJson_Click(object sender, EventArgs e)
+        { 
+            //me falta arreglar dgv para levantar datos de ahí
+            Lapiz.FormatoManejoArchivos = "Json";
+
+        }
+
+        int m, mx, my;
+        private void FrmManenoCartuchera_MouseDown(object sender, MouseEventArgs e)
+        {
+            m = 1;
+            mx = e.X;
+            my = e.Y;
+        }
+
+        private void FrmManenoCartuchera_MouseUp(object sender, MouseEventArgs e)
+        {
+            m = 0;
+        }
+
+        private void FrmManenoCartuchera_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (m == 1)
+            {
+                this.SetDesktopLocation(MousePosition.X - mx, MousePosition.Y - my);
+            }
         }
     }
 }

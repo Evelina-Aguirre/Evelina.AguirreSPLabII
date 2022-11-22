@@ -11,6 +11,9 @@ namespace Entidades
         private EMarca marca;
         string caracteristica;
 
+        public Utiles()
+        {     
+        }
         public Utiles(string nombre, float precio, EMarca marca, string caracteristica)
         {
             this.nombre = nombre;

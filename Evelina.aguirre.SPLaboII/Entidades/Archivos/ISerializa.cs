@@ -8,6 +8,6 @@ namespace Entidades
 {
     public interface ISerializa <T>
     {
-        public void GuardarDatos(List<T> listaConDatos);
+        public void GuardarDatos(T listaConDatos);
     }
 }
