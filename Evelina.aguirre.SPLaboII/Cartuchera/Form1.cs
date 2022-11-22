@@ -197,7 +197,12 @@ namespace FrmCartuchera
 
         private void btnQuitar_Click(object sender, EventArgs e)
         {
-            this.dgvElementosCartuchera.DataSource = ConexionDB.TraeDatosDeUnaCartucheraDesdeDB();
+            //Boton de prueba
+            //Lapiz lapiz = new Lapiz(0, EMarca.SonMuyUtiles, "Blanco");
+            //ConexionDB.cargaTablaCartucheraEnDB(lapiz);
+            Cartuchera<Utiles> cartucheraAux = new Cartuchera<Utiles>(10);
+            cartucheraAux = ConexionDB.TraeDatosDeUnaCartucheraDesdeDB();
+            this.dgvElementosCartuchera.DataSource = cartucheraAux.Elementos;
         }
 
         private void FrmManenoCartuchera_MouseUp(object sender, MouseEventArgs e)

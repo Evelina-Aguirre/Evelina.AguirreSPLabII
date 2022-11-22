@@ -22,25 +22,45 @@ namespace Entidades.DB
             comando.Connection = conexion;
         }
 
-        
+        public static void cargaTablaCartucheraEnDB(Utiles util)
+        {
+            string consulta = $"Insert into Elementos";
+            SqlConnection conexion = new SqlConnection(conexionString);
+            SqlCommand comando = new SqlCommand(consulta, conexion);
+
+            comando.CommandText = $"Insert into Elementos (Nombre, Precio, Marca, Caracteristica) values ('{util.Nombre}','{util.Precio}'," +
+                $"'{util.Marca}','{util.Caracteristica}')";
+            comando.Connection = conexion;
+
+            try
+            {
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            finally
+            {
+                conexion.Close();
+            }
+
+        }
         public static Cartuchera<Utiles> TraeDatosDeUnaCartucheraDesdeDB()
         {
             string consulta = $"Select * from Elementos"; 
             SqlConnection conexion= new SqlConnection(conexionString);
             SqlCommand comando = new SqlCommand(consulta, conexion);
             Cartuchera<Utiles> cartuchera;
+            Utiles elemento;
 
             try
             {
                 cartuchera = new Cartuchera<Utiles>(20);
-                Utiles elemento;
                 comando.CommandText = consulta;
                 conexion.Open();
                 dataReader = comando.ExecuteReader();
+                cartuchera = new Cartuchera<Utiles>(20);
 
                 while (dataReader.Read())
                 {
-                    cartuchera = new Cartuchera<Utiles>(20);
                  
                     if(dataReader["Nombre"].ToString() == "LAPIZ")
                     {
@@ -48,6 +68,7 @@ namespace Entidades.DB
                         elemento.Precio = float.Parse(dataReader["Precio"].ToString());
                         elemento.Marca = (EMarca)(Enum.Parse(typeof(EMarca), dataReader["Marca"].ToString()));
                         elemento.Caracteristica = dataReader["Caracteristica"].ToString();
+                        cartuchera.Elementos.Add(elemento);
                     }
                     else if (dataReader["Nombre"].ToString() == "GOMA")
                     {
@@ -55,6 +76,7 @@ namespace Entidades.DB
                         elemento.Precio = (float)(dataReader["Precio"]);
                         elemento.Marca = (EMarca)Enum.Parse(typeof(EMarca), dataReader["Marca"].ToString());
                         elemento.Caracteristica = dataReader["Caracteristica"].ToString();
+                        cartuchera.Elementos.Add(elemento);
                     }
                     else
                     {
@@ -62,9 +84,9 @@ namespace Entidades.DB
                         elemento.Precio = (float)(dataReader["Precio"]);
                         elemento.Marca = (EMarca)Enum.Parse(typeof(EMarca), dataReader["Marca"].ToString());
                         elemento.Caracteristica = dataReader["Caracteristica"].ToString();
+                        cartuchera.Elementos.Add(elemento);
                     }
 
-                    cartuchera.Elementos.Add(elemento);
                 }
             }
             catch (Exception)
@@ -82,23 +104,25 @@ namespace Entidades.DB
             return cartuchera;
         }
 
-        public static EMarca deStringAEnumEMarca(string marcaString)
-        {
-            EMarca marca = EMarca.UtilGenerico;
-            switch (marcaString)
-            {
-                case "MisUtiles":
-                    marca = EMarca.MisUtiles;
-                    break;
-                case "SonMuyUtiles":
-                    marca = EMarca.SonMuyUtiles;
-                    break;
-                case "UtilGenerico":
-                    marca = EMarca.UtilGenerico;
-                    break;
-            }
-            return marca;
-        }
+
+
+        //public static EMarca deStringAEnumEMarca(string marcaString)
+        //{
+        //    EMarca marca = EMarca.UtilGenerico;
+        //    switch (marcaString)
+        //    {
+        //        case "MisUtiles":
+        //            marca = EMarca.MisUtiles;
+        //            break;
+        //        case "SonMuyUtiles":
+        //            marca = EMarca.SonMuyUtiles;
+        //            break;
+        //        case "UtilGenerico":
+        //            marca = EMarca.UtilGenerico;
+        //            break;
+        //    }
+        //    return marca;
+        //}
 
 
 
