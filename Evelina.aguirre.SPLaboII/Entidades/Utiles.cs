@@ -11,10 +11,9 @@ namespace Entidades
         private EMarca marca;
         string caracteristica;
 
-        public Utiles()
-        {     
-        }
-        public Utiles(string nombre, float precio, EMarca marca, string caracteristica)
+        public Utiles(){
+            }
+        public Utiles(string nombre, float precio, EMarca marca, string caracteristica) : this()
         {
             this.nombre = nombre;
             this.precio = precio;
@@ -23,10 +22,10 @@ namespace Entidades
         }
 
         
-        public string Nombre { get => nombre;}
-        public float Precio { get => precio;}
-        public EMarca Marca { get => marca;}
-        public string Caracteristica { get => caracteristica;}
+        public string Nombre { get => nombre; set => nombre = value; }
+        public float Precio { get => precio; set => precio = value; }
+        public EMarca Marca { get => marca; set => marca = value; }
+        public string Caracteristica { get => caracteristica; set => caracteristica = value; }
 
         public virtual string MostrarDatos()
         {

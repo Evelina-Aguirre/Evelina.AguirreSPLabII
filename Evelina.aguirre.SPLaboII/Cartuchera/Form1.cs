@@ -168,6 +168,24 @@ namespace FrmCartuchera
 
         }
 
+        private void btnLeerJson_Click(object sender, EventArgs e)
+        {
+            Lapiz.FormatoManejoArchivos = "Json";
+            Lapiz lapiz = new Lapiz(0,EMarca.UtilGenerico,"");
+            lapiz = lapiz.LeerDatos();
+
+            MessageBox.Show(lapiz.MostrarDatos());
+            
+
+        }
+        private void btnLeerXml_Click(object sender, EventArgs e)
+        {
+            Lapiz.FormatoManejoArchivos = "Xml";
+            Lapiz lapiz = new Lapiz(0, EMarca.UtilGenerico, "");
+            lapiz = lapiz.LeerDatos();
+            MessageBox.Show(lapiz.MostrarDatos());
+
+        }
         int m, mx, my;
         private void FrmManenoCartuchera_MouseDown(object sender, MouseEventArgs e)
         {

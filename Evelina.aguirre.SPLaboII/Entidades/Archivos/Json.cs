@@ -47,7 +47,7 @@ namespace Entidades.Archivos
         public Lapiz LeerDatos()
         {
             string ArchivoALeer = string.Empty;
-            Lapiz lapiz = null;
+            Lapiz lapiz = new Lapiz(0,EMarca.UtilGenerico,"");
 
             try
             {
@@ -59,12 +59,12 @@ namespace Entidades.Archivos
                         if (path.Contains("LapicesJson.js"))
                         {
                             ArchivoALeer = path;
-                            break;
                         }
 
                         if (ArchivoALeer != null)
                         {
                             lapiz = JsonSerializer.Deserialize<Lapiz>(File.ReadAllText(ArchivoALeer));
+                          
                         }
                     }
 

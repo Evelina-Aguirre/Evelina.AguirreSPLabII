@@ -6,12 +6,10 @@ namespace Entidades
     public class Lapiz : Utiles, ISerializa<Lapiz>, IDeserializa<Lapiz>
     {
         private static string formatoManejoArchivos;
-
-
-        public Lapiz() : base()
-        {
+        public Lapiz()
+        {       
         }
-        public Lapiz(float precio, EMarca marca, string color) : base("LAPIZ", precio, marca, color)
+        public Lapiz(float precio, EMarca marca, string caracteristica) : base("LAPIZ", precio, marca, caracteristica)
         {
         }
 
@@ -53,7 +51,7 @@ namespace Entidades
         /// <returns></returns>
         public Lapiz LeerDatos()
         {
-            Lapiz lapiz = new Lapiz();
+            Lapiz lapiz = new Lapiz(0, EMarca.UtilGenerico, "");
 
             if (FormatoManejoArchivos == "Json")
             {

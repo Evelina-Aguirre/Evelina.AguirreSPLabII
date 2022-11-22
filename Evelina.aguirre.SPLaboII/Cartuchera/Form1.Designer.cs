@@ -52,8 +52,8 @@ namespace FrmCartuchera
             this.btnAgregar = new System.Windows.Forms.Button();
             this.grpCaracteristicas = new System.Windows.Forms.GroupBox();
             this.lblEError = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnLeerXml = new System.Windows.Forms.Button();
+            this.btnLeerJson = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
@@ -314,31 +314,33 @@ namespace FrmCartuchera
             this.lblEError.Text = "                            ";
             this.lblEError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // button1
+            // btnLeerXml
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(157)))), ((int)(((byte)(216)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(325, 238);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 56);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Leer Lapiz Xml";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnLeerXml.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(157)))), ((int)(((byte)(216)))));
+            this.btnLeerXml.FlatAppearance.BorderSize = 0;
+            this.btnLeerXml.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLeerXml.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLeerXml.Location = new System.Drawing.Point(325, 238);
+            this.btnLeerXml.Name = "btnLeerXml";
+            this.btnLeerXml.Size = new System.Drawing.Size(90, 56);
+            this.btnLeerXml.TabIndex = 24;
+            this.btnLeerXml.Text = "Leer Lapiz Xml";
+            this.btnLeerXml.UseVisualStyleBackColor = false;
+            this.btnLeerXml.Click += new System.EventHandler(this.btnLeerXml_Click);
             // 
-            // button2
+            // btnLeerJson
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(157)))), ((int)(((byte)(216)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(221, 239);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 55);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Leer Lapiz JSon";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnLeerJson.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(157)))), ((int)(((byte)(216)))));
+            this.btnLeerJson.FlatAppearance.BorderSize = 0;
+            this.btnLeerJson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLeerJson.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLeerJson.Location = new System.Drawing.Point(221, 239);
+            this.btnLeerJson.Name = "btnLeerJson";
+            this.btnLeerJson.Size = new System.Drawing.Size(92, 55);
+            this.btnLeerJson.TabIndex = 23;
+            this.btnLeerJson.Text = "Leer Lapiz JSon";
+            this.btnLeerJson.UseVisualStyleBackColor = false;
+            this.btnLeerJson.Click += new System.EventHandler(this.btnLeerJson_Click);
             // 
             // timer1
             // 
@@ -377,8 +379,8 @@ namespace FrmCartuchera
             this.ClientSize = new System.Drawing.Size(835, 322);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnLeerXml);
+            this.Controls.Add(this.btnLeerJson);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbMarca);
             this.Controls.Add(this.btnSalir);
@@ -428,8 +430,8 @@ namespace FrmCartuchera
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.GroupBox grpCaracteristicas;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnLeerXml;
+        private System.Windows.Forms.Button btnLeerJson;
         private System.Windows.Forms.Label lblEError;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;

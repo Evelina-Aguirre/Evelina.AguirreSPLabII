@@ -52,11 +52,11 @@ namespace Entidades.Archivos
         public Lapiz LeerDatos()
         {
             Lapiz lapiz = null;
+            string ArchivoALeer = null;
 
             try
             {
-                string rutaArchivoPrevioEnPath = string.Empty;
-                string ArchivoALeer = string.Empty;
+                
 
                 if (Directory.Exists(path))
                 {
@@ -67,7 +67,6 @@ namespace Entidades.Archivos
                         if (path.Contains("LapizXml.xml"))
                         {
                             ArchivoALeer = path;
-                            break;
                         }
 
                         if (ArchivoALeer != null)
