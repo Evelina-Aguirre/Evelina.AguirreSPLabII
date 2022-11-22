@@ -18,6 +18,10 @@ namespace Entidades.Archivos
             path += @"\EvelinaAguirre_Archivos_2C\";
         }
 
+        /// <summary>
+        /// Guarda los datos de un lapiz en formato Json.
+        /// </summary>
+        /// <param name="lapiz"></param>
         public void GuardarDatos(Lapiz lapiz)
         {
             string nombre = path + "LapicesJson.js";
@@ -36,6 +40,10 @@ namespace Entidades.Archivos
             }
         }
 
+        /// <summary>
+        /// Lee datos de un lapiz desde un archivo Json.
+        /// </summary>
+        /// <returns></returns>
         public Lapiz LeerDatos()
         {
             string ArchivoALeer = string.Empty;

@@ -16,6 +16,11 @@ namespace Entidades.Archivos
             path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             path += @"\EvelinaAguirre_Archivos_2C\";
         }
+
+        /// <summary>
+        /// Guarda los datos de un lapiz en formato Xml.
+        /// </summary>
+        /// <param name="lapiz"></param>
         public void GuardarDatos(Lapiz lapiz)
         {
             string nombre = path + "LapizXml.xml";
@@ -40,6 +45,10 @@ namespace Entidades.Archivos
 
         }
 
+        /// <summary>
+        /// Lee datos de un lapiz desde un archivo Xml.
+        /// </summary>
+        /// <returns></returns>
         public Lapiz LeerDatos()
         {
             Lapiz lapiz = null;

@@ -88,7 +88,7 @@ namespace Entidades
             sb.AppendLine($"Cantidad de elementos: {CantidadActual}");
             sb.AppendLine($"Precio total: {PrecioTotal}\n");
             sb.AppendLine("------------------------- ");
-            sb.AppendLine("Elementos:");
+            sb.AppendLine("Elementos:"); 
             foreach (Utiles item in Elementos)
             {
                 sb.AppendLine(item.MostrarDatos());

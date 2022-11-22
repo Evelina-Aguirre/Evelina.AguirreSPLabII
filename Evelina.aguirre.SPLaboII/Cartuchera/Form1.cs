@@ -147,8 +147,24 @@ namespace FrmCartuchera
 
         private void btnExportarJson_Click(object sender, EventArgs e)
         { 
-            //me falta arreglar dgv para levantar datos de ahí
             Lapiz.FormatoManejoArchivos = "Json";
+            if (dgvElementosCartuchera.Rows.Count > 0 && dgvElementosCartuchera.Rows[0].Cells[0].Value is not null)
+            {
+                Lapiz lapiz = new Lapiz((float)Convert.ToDouble(this.dgvElementosCartuchera.CurrentRow.Cells[1].Value),(EMarca)this.dgvElementosCartuchera.CurrentRow.Cells[2].Value, 
+                    this.dgvElementosCartuchera.CurrentRow.Cells[3].Value.ToString());
+                lapiz.GuardarDatos(lapiz);
+            }
+            
+        }
+        private void btnExpotarLapiz_Click(object sender, EventArgs e)
+        {
+            Lapiz.FormatoManejoArchivos = "Xml";
+            if (dgvElementosCartuchera.Rows.Count > 0 && dgvElementosCartuchera.Rows[0].Cells[0].Value is not null)
+            {
+                Lapiz lapiz = new Lapiz((float)Convert.ToDouble(this.dgvElementosCartuchera.CurrentRow.Cells[1].Value), (EMarca)this.dgvElementosCartuchera.CurrentRow.Cells[2].Value,
+                    this.dgvElementosCartuchera.CurrentRow.Cells[3].Value.ToString());
+                lapiz.GuardarDatos(lapiz);
+            }
 
         }
 
@@ -159,6 +175,7 @@ namespace FrmCartuchera
             mx = e.X;
             my = e.Y;
         }
+
 
         private void FrmManenoCartuchera_MouseUp(object sender, MouseEventArgs e)
         {
