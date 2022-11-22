@@ -13,7 +13,7 @@ public enum EPara
 public enum EMarca
 {
     MisUtiles,
-    sonMuyUtiles,
+    SonMuyUtiles,
     UtilGenerico
 }
 

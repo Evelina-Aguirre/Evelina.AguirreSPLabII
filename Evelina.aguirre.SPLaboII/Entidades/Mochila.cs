@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,9 +24,10 @@ namespace Entidades
         public static void CargarMochila()
         {
             Cartuchera<Utiles> cartuchera1 = new Cartuchera<Utiles>(10);
-           // Cartuchera<Utiles> cartuchera2 = new Cartuchera<Utiles>(20);
+           // cartuchera1 = ConexionDB.TraeDatosDeUnaCartucheraDesdeDB();
+            // Cartuchera<Utiles> cartuchera2 = new Cartuchera<Utiles>(20);
 
-            Utiles l1 = new Lapiz(100,EMarca.sonMuyUtiles, EColor.Amarillo.ToString());
+            Utiles l1 = new Lapiz(100,EMarca.SonMuyUtiles, EColor.Amarillo.ToString());
             Utiles l2 = new Lapiz(80, EMarca.UtilGenerico, EColor.Rojo.ToString());
             //Utiles l3 = new Lapiz(150, EMarca.MisUtiles, EColor.Gris);
             //Utiles g1 = new Goma(30, EMarca.sonMuyUtiles, EPara.Lapiz_Tinta);
@@ -40,16 +42,16 @@ namespace Entidades
 
             cartuchera1 += l1;
             cartuchera1 += l2;
-            //cartuchera1 += l3;
-            //cartuchera1 += g1;
-            //cartuchera1 += g2;
-            //cartuchera1 += s1;
+            ////cartuchera1 += l3;
+            ////cartuchera1 += g1;
+            ////cartuchera1 += g2;
+            ////cartuchera1 += s1;
 
-            //cartuchera2 += l4;
-            //cartuchera2 += l5;
-            //cartuchera2 += l6;
-            //cartuchera2 += g3;
-            //cartuchera2 += s2;
+            ////cartuchera2 += l4;
+            ////cartuchera2 += l5;
+            ////cartuchera2 += l6;
+            ////cartuchera2 += g3;
+            ////cartuchera2 += s2;
 
             cartucheras.Add(cartuchera1);
             //Cartucheras.Add(cartuchera2);
@@ -59,10 +61,10 @@ namespace Entidades
         {
             Cartuchera<Utiles> cartuchera3 = new Cartuchera<Utiles>(10);
 
-            Utiles l1 = new Lapiz(100, EMarca.sonMuyUtiles, EColor.Amarillo.ToString());
+            Utiles l1 = new Lapiz(100, EMarca.SonMuyUtiles, EColor.Amarillo.ToString());
             Utiles l2 = new Lapiz(80, EMarca.UtilGenerico, EColor.Rojo.ToString());
             Utiles l3 = new Lapiz(150, EMarca.MisUtiles, EColor.Gris.ToString());
-            Utiles g1 = new Goma(30, EMarca.sonMuyUtiles, EPara.Lapiz_Tinta.ToString());
+            Utiles g1 = new Goma(30, EMarca.SonMuyUtiles, EPara.Lapiz_Tinta.ToString());
             Utiles g2 = new Goma(20, EMarca.MisUtiles, EPara.Solo_Lapiz.ToString());
             Utiles s1 = new Sacapunta(50, EMarca.MisUtiles, EMaterial.Metal.ToString());
 

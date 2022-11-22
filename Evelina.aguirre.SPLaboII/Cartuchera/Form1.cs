@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using Entidades.Archivos;
+using Entidades.DB;
 using Entidades.ExcepcionesPropias;
 using System;
 using System.Windows.Forms;
@@ -194,6 +195,10 @@ namespace FrmCartuchera
             my = e.Y;
         }
 
+        private void btnQuitar_Click(object sender, EventArgs e)
+        {
+            this.dgvElementosCartuchera.DataSource = ConexionDB.TraeDatosDeUnaCartucheraDesdeDB();
+        }
 
         private void FrmManenoCartuchera_MouseUp(object sender, MouseEventArgs e)
         {

@@ -157,6 +157,7 @@ namespace FrmCartuchera
             this.btnQuitar.TabIndex = 4;
             this.btnQuitar.Text = "Quitar";
             this.btnQuitar.UseVisualStyleBackColor = false;
+            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
             // 
             // label2
             // 

@@ -8,7 +8,9 @@ namespace Entidades
 {
     public class Sacapunta : Utiles
     {
-        
+        public Sacapunta()
+        { 
+        }
         public Sacapunta(float precio, EMarca marca, string material) : base("SACAPUNTAS",precio, marca,material)
         { 
         }
