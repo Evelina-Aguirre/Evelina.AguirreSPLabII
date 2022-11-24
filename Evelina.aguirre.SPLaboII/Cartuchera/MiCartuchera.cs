@@ -11,7 +11,10 @@ namespace FrmCartuchera
 {
     public partial class FrmManenoCartuchera : Form
     {
-     public static int indexListaDeCartucherasEnMochila = 0;
+        public static int indexListaDeCartucherasEnMochila = 0;
+        Cartuchera<Fibron> carFibrones = new Cartuchera<Fibron>("CarFibrones",10);
+        Random rnd = new Random();
+        Fibron fibron = new Fibron();
         public FrmManenoCartuchera()
         {
             InitializeComponent();
@@ -21,6 +24,8 @@ namespace FrmCartuchera
         private void Form1_Load(object sender, EventArgs e)
         {
             Mochila.Cartucheras[0].EventoPrecio += Txt.GuardarDatos;
+           
+
 
             dgvElementosCartuchera.DataSource = Mochila.Cartucheras[indexListaDeCartucherasEnMochila].Elementos;
             cmbMarca.DataSource = System.Enum.GetValues(typeof(EMarca));
@@ -327,6 +332,35 @@ namespace FrmCartuchera
             frmleerArchivo.ShowDialog();
            
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Mochila.CargarMochilaCartucheraFirbones();
+            this.dgvElementosCartuchera.DataSource = Mochila.Cartucheras[1].Elementos;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            foreach (Fibron item in Mochila.Cartucheras[1].Elementos)
+            {
+                if(item.Nombre == "FIBRON")
+                {
+                    try
+                    {
+
+                    item.Resaltar();
+                    }
+                    catch(SinTintaException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    break;
+                }
+            }
+
+            
+        }
+
 
         private void FrmManenoCartuchera_MouseMove(object sender, MouseEventArgs e)
         {

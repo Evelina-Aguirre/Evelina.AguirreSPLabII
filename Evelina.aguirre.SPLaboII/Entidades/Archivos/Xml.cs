@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace Entidades.Archivos
 {
-    public class Xml : ISerializa<Lapiz>, IDeserializa<Lapiz>
+    public class Xml <T> where T : Utiles
     {
         static string path;
         static Xml()
@@ -21,7 +21,7 @@ namespace Entidades.Archivos
         /// Guarda los datos de un lapiz en formato Xml.
         /// </summary>
         /// <param name="lapiz"></param>
-        public void GuardarDatos(Lapiz lapiz)
+        public void GuardarDatos(T lapiz)
         {
             string nombre = path + "LapizXml.xml";
             try
@@ -49,9 +49,9 @@ namespace Entidades.Archivos
         /// Lee datos de un lapiz desde un archivo Xml.
         /// </summary>
         /// <returns></returns>
-        public Lapiz LeerDatos()
+        public T LeerDatos()
         {
-            Lapiz lapiz = null;
+            T lapiz = null;
             string ArchivoALeer = null;
 
             try
@@ -74,7 +74,7 @@ namespace Entidades.Archivos
                             using (StreamReader reader = new StreamReader(ArchivoALeer))
                             {
                                 XmlSerializer serializer = new XmlSerializer(typeof(Lapiz));
-                                lapiz = (Lapiz)serializer.Deserialize(reader);
+                                lapiz = (T)serializer.Deserialize(reader);
 
                             }
                         }

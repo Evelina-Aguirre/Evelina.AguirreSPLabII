@@ -45,5 +45,26 @@ namespace Entidades.Archivos
         
         }
 
+        public static void GuardarArchivoTintaFaltante(Fibron cartuchera)
+        {
+            string nombre = path + "TintaFaltante.txt";
+            try
+            {
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                StreamWriter sw = new StreamWriter(nombre);
+                sw.Write(cartuchera.MostrarDatos());
+                sw.Close();
+            }
+            catch
+            {
+                throw new ErrorAlIntentarEscribirArchivoException("No se pudo escribir el archivo.");
+            }
+
+        }
+
     }
 }

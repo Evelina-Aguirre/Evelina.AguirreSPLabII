@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Entidades.Archivos
 {
-    public class Json : ISerializa<Lapiz>, IDeserializa<Lapiz>
+    public class Json<T> where T : Utiles
     {
         static string path;
 
@@ -22,7 +22,7 @@ namespace Entidades.Archivos
         /// Guarda los datos de un lapiz en formato Json.
         /// </summary>
         /// <param name="lapiz"></param>
-        public void GuardarDatos(Lapiz lapiz)
+        public void GuardarDatos(T lapiz)
         {
             string nombre = path + "LapicesJson.js";
             try
@@ -44,10 +44,10 @@ namespace Entidades.Archivos
         /// Lee datos de un lapiz desde un archivo Json.
         /// </summary>
         /// <returns></returns>
-        public Lapiz LeerDatos()
+        public T LeerDatos()
         {
             string ArchivoALeer = string.Empty;
-            Lapiz lapiz = new Lapiz(0,EMarca.UtilGenerico,"");
+            T lapiz = null;
 
             try
             {
@@ -63,7 +63,7 @@ namespace Entidades.Archivos
 
                         if (ArchivoALeer != null)
                         {
-                            lapiz = JsonSerializer.Deserialize<Lapiz>(File.ReadAllText(ArchivoALeer));
+                            lapiz = JsonSerializer.Deserialize<T>(File.ReadAllText(ArchivoALeer));
                           
                         }
                     }

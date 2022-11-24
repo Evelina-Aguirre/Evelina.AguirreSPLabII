@@ -23,12 +23,12 @@ namespace Entidades
         {
             if (FormatoManejoArchivos == "Json")
             {
-            Json json = new Json();
+            Json<Lapiz> json = new Json<Lapiz>();
                 json.GuardarDatos(lapiz);
             }
             else if(FormatoManejoArchivos == "Xml")
             {
-                Xml xml = new Xml();
+                Xml<Lapiz> xml = new Xml<Lapiz>();
                 xml.GuardarDatos(lapiz);
             }
 
@@ -44,12 +44,12 @@ namespace Entidades
 
             if (FormatoManejoArchivos == "Json")
             {
-                Json json = new Json();
+                Json<Lapiz> json = new Json<Lapiz>();
                 lapiz = json.LeerDatos();
             }
             else if (FormatoManejoArchivos == "Xml")
             {
-                Xml xml = new Xml();
+                Xml<Lapiz> xml = new Xml<Lapiz>();
                 lapiz = xml.LeerDatos();
             }
 
