@@ -45,23 +45,5 @@ namespace Entidades.Archivos
         
         }
 
-        //public List<Utiles> LeerDatos()
-        //{
-        //    string linea;
-
-        //    try
-        //    {
-        //        StreamReader sr = new StreamReader(path+ "Tickets.txt");
-        //        linea = sr.ReadLine();
-        //        while(linea != null)
-        //        {
-        //            linea = sr.ReadLine();
-        //        }
-        //        sr.Close();
-        //    }
-        //    catch
-        //    {
-        //        throw new NoSeEncontroElArchivoException("No se encontró el archivo.");            }
-        //}
     }
 }

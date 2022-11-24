@@ -22,9 +22,6 @@ namespace FrmCartuchera
         {
             Mochila.Cartucheras[0].EventoPrecio += Txt.GuardarDatos;
 
-            //cartucheraDB = ConexionDB.TraeDatosDeUnaCartucheraDesdeDB();
-            //Mochila.Cartucheras.Add(cartucheraDB);
-
             dgvElementosCartuchera.DataSource = Mochila.Cartucheras[indexListaDeCartucherasEnMochila].Elementos;
             cmbMarca.DataSource = System.Enum.GetValues(typeof(EMarca));
             grpCaracteristicas.Text = " Elemento ";

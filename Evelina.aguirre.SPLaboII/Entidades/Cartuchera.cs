@@ -9,8 +9,6 @@ namespace Entidades
     {
         public delegate void NotificadorSuperaPrecio(Cartuchera<T> cartuchera);
         public event NotificadorSuperaPrecio EventoPrecio;
-        //public delegate void NotificadorNoHayEsoacioSuficiente(string mensaje);
-        //public event NotificadorNoHayEsoacioSuficiente EventoEspacioCartuchera;
 
 
         private string nombre;
@@ -84,6 +82,12 @@ namespace Entidades
             return c;
         }
 
+        /// <summary>
+        /// Remueve un elemento a la cartuchera
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="util"></param>
+        /// <returns></returns>
         public static Cartuchera<T> operator -(Cartuchera<T> c, T util)
         {
             bool existe = false;
@@ -107,6 +111,11 @@ namespace Entidades
             return c;
         }
 
+        /// <summary>
+        /// Busca un elemento en la cartuchera.
+        /// </summary>
+        /// <param name="util"></param>
+        /// <returns></returns>
         public T BuscarElementoEnCartuchera(T util)
         {
             foreach (T item in elementos)

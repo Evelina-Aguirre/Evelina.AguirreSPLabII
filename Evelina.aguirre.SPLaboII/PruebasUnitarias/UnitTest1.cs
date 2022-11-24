@@ -13,8 +13,8 @@ namespace PruebasUnitarias
         {
             //Arrange
             List<Utiles> elementos = new List<Utiles>();
-            Cartuchera<Utiles> cartuchera = new Cartuchera<Utiles>(2, elementos);
-            Lapiz lapiz = new Lapiz(10, "Lapiz");
+            Cartuchera<Utiles> cartuchera = new Cartuchera<Utiles>("auxCart",2);
+            Lapiz lapiz = new Lapiz();
             elementos.Add(lapiz);
 
             //Act
@@ -30,40 +30,33 @@ namespace PruebasUnitarias
         {
             //Arrange
             List<Utiles> elementos = new List<Utiles>();
-            Cartuchera<Utiles> cartuchera = new Cartuchera<Utiles>(1, elementos);
-            Lapiz lapiz = new Lapiz(10, "Lapiz");
-            Goma goma = new Goma(10, "Goma");
+            Cartuchera<Utiles> cartuchera = new Cartuchera<Utiles>("auxCart", 1);
+            Lapiz lapiz = new Lapiz(10, EMarca.MisUtiles, "");
+            Lapiz lapiz1 = new Lapiz(10, EMarca.MisUtiles, "");
+            elementos.Add(lapiz);
+            elementos.Add(lapiz1);
 
             //Act
-            cartuchera += goma;
+            cartuchera += lapiz1;
             cartuchera += lapiz;
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(CartucheraVaciaException))]
-        public void Prueba_excepcion_cartuchera_vacia()
-        {
-            //Arrange
-            List<Utiles> elementos = new List<Utiles>();
-            Cartuchera<Utiles> cartuchera2 = new Cartuchera<Utiles>(1, elementos);
-
-            //Act
-            float cantidadActual = cartuchera2.PrecioTotal;
-            
-        }
 
         [TestMethod]
         public void calcular_precio_total_correctamente()
         {
             //Arrange
-            List<Utiles> elementos = new List<Utiles>();
-            Cartuchera<Utiles> cartuchera = new Cartuchera<Utiles>(2, elementos);
-            Lapiz lapiz = new Lapiz(10, "Lapiz");
-            Goma goma = new Goma(10, "Goma");
+           List<Utiles> elementos = new List<Utiles>();
+            Cartuchera<Utiles> cartuchera = new Cartuchera<Utiles>("auxCart",2);
+            Lapiz lapiz = new Lapiz(10,EMarca.MisUtiles,"");
+            Lapiz lapiz1 = new Lapiz(10, EMarca.MisUtiles, "");
+            elementos.Add(lapiz);
+            elementos.Add(lapiz1);
+
 
             //Act
             cartuchera += lapiz;
-            cartuchera += goma;
+            cartuchera += lapiz1;
 
             //Assert
             Assert.AreEqual(20, cartuchera.PrecioTotal);

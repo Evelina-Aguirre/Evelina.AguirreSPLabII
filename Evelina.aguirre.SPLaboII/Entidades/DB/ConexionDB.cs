@@ -22,6 +22,10 @@ namespace Entidades.DB
             comando.Connection = conexion;
         }
 
+        /// <summary>
+        /// Agrega un elemento a la DB.
+        /// </summary>
+        /// <param name="util"></param>
         public static void AgregaElementoEnDB(Utiles util)
         {
             string consulta = $"Insert into [Utiles].[dbo].[Cartuchera1]";
@@ -43,6 +47,11 @@ namespace Entidades.DB
             }
 
         }
+
+        /// <summary>
+        /// Trae una cartuchera desde db.
+        /// </summary>
+        /// <returns></returns>
         public static Cartuchera<Utiles> TraeDatosDeUnaCartucheraDesdeDB()
         {
             string consulta = $"Select * FROM [Utiles].[dbo].[Cartuchera1]"; 
