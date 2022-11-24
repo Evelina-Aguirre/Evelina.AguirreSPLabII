@@ -1,4 +1,5 @@
 ﻿using Entidades.ExcepcionesPropias;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,22 +9,28 @@ namespace Entidades
     {
         public delegate void NotificadorSuperaPrecio(Cartuchera<T> cartuchera);
         public event NotificadorSuperaPrecio EventoPrecio;
+        //public delegate void NotificadorNoHayEsoacioSuficiente(string mensaje);
+        //public event NotificadorNoHayEsoacioSuficiente EventoEspacioCartuchera;
 
+
+        private string nombre;
         private int cantidadMaxima;
         private List<T> elementos;
         private int cantidadActual;
 
-        public Cartuchera(int cantidadMaxima)
+        
+        public Cartuchera(string nombre, int cantidadMaxima)
         {
+            this.nombre = nombre;
             elementos = new List<T>();
             this.cantidadMaxima = cantidadMaxima;
-            cantidadActual = 0;
+            cantidadActual = elementos.Count;
         }
 
         public List<T> Elementos { get => elementos; set => elementos = value; }
         public int CantidadActual { get => cantidadActual; }
 
-
+        public int CantidadMaxima { get => cantidadMaxima; set => cantidadMaxima = value; }
         public float PrecioTotal
         {
             get
@@ -36,6 +43,7 @@ namespace Entidades
                 return 0;
             }
         }
+
 
         /// <summary>
         /// Recorre la lista de ítems de una lista y suma el precio de sus elementos.
@@ -100,11 +108,22 @@ namespace Entidades
             return c;
         }
 
+        public T BuscarElementoEnCartuchera(T util)
+        {
+            foreach (T item in elementos)
+            {
+                if(item == util)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
         /// <summary>
         /// Muestra los datos de una cartuchera.
         /// </summary>
         /// <returns></returns>
-        public string MostrarDatos()
+        public  virtual string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Capacidad cartuchera: {cantidadMaxima}");

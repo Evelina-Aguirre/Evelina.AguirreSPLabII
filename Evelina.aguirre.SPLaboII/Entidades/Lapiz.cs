@@ -9,13 +9,12 @@ namespace Entidades
         public Lapiz()
         {       
         }
-        public Lapiz(float precio, EMarca marca, string caracteristica) : base("LAPIZ", precio, marca, caracteristica)
+        public Lapiz(float precio, EMarca marca, string caracteristica) : base("LAPIZ", precio, marca,caracteristica)
         {
         }
 
         public static string FormatoManejoArchivos { get => formatoManejoArchivos; set => formatoManejoArchivos = value; }
-
-
+       
         /// <summary>
         /// Serializa un lapiz en formato Json o xml.
         /// </summary>

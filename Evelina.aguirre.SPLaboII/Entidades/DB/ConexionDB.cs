@@ -24,11 +24,11 @@ namespace Entidades.DB
 
         public static void AgregaElementoEnDB(Utiles util)
         {
-            string consulta = $"Insert into Elementos";
+            string consulta = $"Insert into [Utiles].[dbo].[Cartuchera1]";
             SqlConnection conexion = new SqlConnection(conexionString);
             SqlCommand comando = new SqlCommand(consulta, conexion);
 
-            comando.CommandText = $"Insert into Elementos (Nombre, Precio, Marca, Caracteristica) values ('{util.Nombre}','{util.Precio}'," +
+            comando.CommandText = $"Insert into [Utiles].[dbo].[Cartuchera1] (Nombre, Precio, Marca, Caracteristica) values ('{util.Nombre}','{util.Precio}'," +
                 $"'{util.Marca}','{util.Caracteristica}')";
             comando.Connection = conexion;
 
@@ -45,19 +45,19 @@ namespace Entidades.DB
         }
         public static Cartuchera<Utiles> TraeDatosDeUnaCartucheraDesdeDB()
         {
-            string consulta = $"Select * from Elementos"; 
+            string consulta = $"Select * FROM [Utiles].[dbo].[Cartuchera1]"; 
             SqlConnection conexion= new SqlConnection(conexionString);
             SqlCommand comando = new SqlCommand(consulta, conexion);
             Cartuchera<Utiles> cartuchera;
             Utiles elemento;
+            
 
             try
             {
-                cartuchera = new Cartuchera<Utiles>(20);
+                cartuchera = new Cartuchera<Utiles>("cartuchera",20);
                 comando.CommandText = consulta;
                 conexion.Open();
                 dataReader = comando.ExecuteReader();
-                cartuchera = new Cartuchera<Utiles>(20);
 
                 while (dataReader.Read())
                 {
@@ -105,26 +105,26 @@ namespace Entidades.DB
         }
 
 
+        public static void borraElementosActualesEnUnaCartucheraEnDB()
+        {
+            string consulta = $"DELETE FROM [Utiles].[dbo].[Cartuchera1]";
+            SqlConnection conexion = new SqlConnection(conexionString);
+            SqlCommand comando = new SqlCommand(consulta, conexion);
 
-        //public static EMarca deStringAEnumEMarca(string marcaString)
-        //{
-        //    EMarca marca = EMarca.UtilGenerico;
-        //    switch (marcaString)
-        //    {
-        //        case "MisUtiles":
-        //            marca = EMarca.MisUtiles;
-        //            break;
-        //        case "SonMuyUtiles":
-        //            marca = EMarca.SonMuyUtiles;
-        //            break;
-        //        case "UtilGenerico":
-        //            marca = EMarca.UtilGenerico;
-        //            break;
-        //    }
-        //    return marca;
-        //}
+            comando.CommandText = consulta;
+            comando.Connection = conexion;
 
+            try
+            {
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            finally
+            {
+                conexion.Close();
+            }
 
+        }
 
     }
 }

@@ -34,6 +34,7 @@ namespace útiles
             this.dgvCartucheras = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.btnEliminarCartuchera = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCartucheras)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,17 +84,29 @@ namespace útiles
             this.btnEliminarCartuchera.Text = "Eliminar";
             this.btnEliminarCartuchera.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(387, 175);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(174, 25);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Salir";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // FrmInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(586, 180);
+            this.ClientSize = new System.Drawing.Size(586, 214);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnEliminarCartuchera);
             this.Controls.Add(this.dgvCartucheras);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCartuchera);
             this.Controls.Add(this.btnNuevaCartuchera);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmInicio";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmInicio";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCartucheras)).EndInit();
             this.ResumeLayout(false);
@@ -108,5 +121,6 @@ namespace útiles
         private System.Windows.Forms.DataGridView dgvCartucheras;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnEliminarCartuchera;
+        private System.Windows.Forms.Button button1;
     }
 }

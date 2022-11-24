@@ -59,6 +59,10 @@ namespace FrmCartuchera
             this.btnCargarDesdeDB = new System.Windows.Forms.Button();
             this.btnGuardarCambios = new System.Windows.Forms.Button();
             this.lblCantidad = new System.Windows.Forms.Label();
+            this.btnModifiar = new System.Windows.Forms.Button();
+            this.lblActualizar = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvElementosCartuchera)).BeginInit();
             this.grpCaracteristicas.SuspendLayout();
             this.SuspendLayout();
@@ -153,7 +157,7 @@ namespace FrmCartuchera
             this.btnQuitar.FlatAppearance.BorderSize = 0;
             this.btnQuitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnQuitar.Location = new System.Drawing.Point(431, 188);
+            this.btnQuitar.Location = new System.Drawing.Point(431, 243);
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(93, 46);
             this.btnQuitar.TabIndex = 4;
@@ -179,7 +183,7 @@ namespace FrmCartuchera
             this.btnExportarJson.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnExportarJson.Location = new System.Drawing.Point(21, 239);
             this.btnExportarJson.Name = "btnExportarJson";
-            this.btnExportarJson.Size = new System.Drawing.Size(87, 55);
+            this.btnExportarJson.Size = new System.Drawing.Size(87, 50);
             this.btnExportarJson.TabIndex = 7;
             this.btnExportarJson.Text = "Exportar Lapiz JSon";
             this.btnExportarJson.UseVisualStyleBackColor = false;
@@ -193,7 +197,7 @@ namespace FrmCartuchera
             this.btnExpotarLapiz.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnExpotarLapiz.Location = new System.Drawing.Point(126, 239);
             this.btnExpotarLapiz.Name = "btnExpotarLapiz";
-            this.btnExpotarLapiz.Size = new System.Drawing.Size(85, 55);
+            this.btnExpotarLapiz.Size = new System.Drawing.Size(85, 50);
             this.btnExpotarLapiz.TabIndex = 8;
             this.btnExpotarLapiz.Text = "Exportar Lapiz Xml";
             this.btnExpotarLapiz.UseVisualStyleBackColor = false;
@@ -310,7 +314,7 @@ namespace FrmCartuchera
             // lblEError
             // 
             this.lblEError.AutoSize = true;
-            this.lblEError.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblEError.ForeColor = System.Drawing.Color.Red;
             this.lblEError.Location = new System.Drawing.Point(19, 129);
             this.lblEError.Name = "lblEError";
             this.lblEError.Size = new System.Drawing.Size(91, 15);
@@ -326,7 +330,7 @@ namespace FrmCartuchera
             this.btnLeerXml.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnLeerXml.Location = new System.Drawing.Point(331, 240);
             this.btnLeerXml.Name = "btnLeerXml";
-            this.btnLeerXml.Size = new System.Drawing.Size(84, 56);
+            this.btnLeerXml.Size = new System.Drawing.Size(84, 49);
             this.btnLeerXml.TabIndex = 24;
             this.btnLeerXml.Text = "Leer Lapiz Xml";
             this.btnLeerXml.UseVisualStyleBackColor = false;
@@ -340,7 +344,7 @@ namespace FrmCartuchera
             this.btnLeerJson.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnLeerJson.Location = new System.Drawing.Point(231, 239);
             this.btnLeerJson.Name = "btnLeerJson";
-            this.btnLeerJson.Size = new System.Drawing.Size(79, 55);
+            this.btnLeerJson.Size = new System.Drawing.Size(79, 50);
             this.btnLeerJson.TabIndex = 23;
             this.btnLeerJson.Text = "Leer Lapiz JSon";
             this.btnLeerJson.UseVisualStyleBackColor = false;
@@ -368,7 +372,7 @@ namespace FrmCartuchera
             this.btnCargarDesdeDB.FlatAppearance.BorderSize = 0;
             this.btnCargarDesdeDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCargarDesdeDB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCargarDesdeDB.Location = new System.Drawing.Point(21, 310);
+            this.btnCargarDesdeDB.Location = new System.Drawing.Point(21, 305);
             this.btnCargarDesdeDB.Name = "btnCargarDesdeDB";
             this.btnCargarDesdeDB.Size = new System.Drawing.Size(190, 27);
             this.btnCargarDesdeDB.TabIndex = 26;
@@ -382,11 +386,11 @@ namespace FrmCartuchera
             this.btnGuardarCambios.FlatAppearance.BorderSize = 0;
             this.btnGuardarCambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardarCambios.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnGuardarCambios.Location = new System.Drawing.Point(231, 310);
+            this.btnGuardarCambios.Location = new System.Drawing.Point(231, 305);
             this.btnGuardarCambios.Name = "btnGuardarCambios";
             this.btnGuardarCambios.Size = new System.Drawing.Size(184, 27);
             this.btnGuardarCambios.TabIndex = 27;
-            this.btnGuardarCambios.Text = "Guardar cambios";
+            this.btnGuardarCambios.Text = "Guardar cambios en DB";
             this.btnGuardarCambios.UseVisualStyleBackColor = false;
             this.btnGuardarCambios.Click += new System.EventHandler(this.btnGuardarCambios_Click);
             // 
@@ -394,12 +398,53 @@ namespace FrmCartuchera
             // 
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblCantidad.Location = new System.Drawing.Point(295, 14);
+            this.lblCantidad.Location = new System.Drawing.Point(250, 14);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(107, 15);
             this.lblCantidad.TabIndex = 28;
             this.lblCantidad.Text = "Cantidad Actual : 3";
             this.lblCantidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnModifiar
+            // 
+            this.btnModifiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(157)))), ((int)(((byte)(216)))));
+            this.btnModifiar.FlatAppearance.BorderSize = 0;
+            this.btnModifiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModifiar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnModifiar.Location = new System.Drawing.Point(431, 188);
+            this.btnModifiar.Name = "btnModifiar";
+            this.btnModifiar.Size = new System.Drawing.Size(93, 46);
+            this.btnModifiar.TabIndex = 29;
+            this.btnModifiar.Text = "Modificar";
+            this.btnModifiar.UseVisualStyleBackColor = false;
+            this.btnModifiar.Click += new System.EventHandler(this.btnModifiar_Click);
+            // 
+            // lblActualizar
+            // 
+            this.lblActualizar.AutoSize = true;
+            this.lblActualizar.Location = new System.Drawing.Point(441, 310);
+            this.lblActualizar.Name = "lblActualizar";
+            this.lblActualizar.Size = new System.Drawing.Size(94, 15);
+            this.lblActualizar.TabIndex = 30;
+            this.lblActualizar.Text = "                             ";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(157)))), ((int)(((byte)(216)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(567, 249);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(225, 40);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Leer Tickets";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // FrmManenoCartuchera
             // 
@@ -407,6 +452,9 @@ namespace FrmCartuchera
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(219)))));
             this.ClientSize = new System.Drawing.Size(835, 356);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lblActualizar);
+            this.Controls.Add(this.btnModifiar);
             this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.btnGuardarCambios);
             this.Controls.Add(this.btnCargarDesdeDB);
@@ -445,7 +493,6 @@ namespace FrmCartuchera
         #endregion
 
         private System.Windows.Forms.Button btnLapiz;
-        private System.Windows.Forms.DataGridView dgvElementosCartuchera;
         private System.Windows.Forms.Button btnGoma;
         private System.Windows.Forms.Button btnSacapuntas;
         private System.Windows.Forms.Button btnQuitar;
@@ -470,5 +517,10 @@ namespace FrmCartuchera
         private System.Windows.Forms.Button btnCargarDesdeDB;
         private System.Windows.Forms.Button btnGuardarCambios;
         private System.Windows.Forms.Label lblCantidad;
+        private System.Windows.Forms.Button btnModifiar;
+        private System.Windows.Forms.Label lblActualizar;
+        public System.Windows.Forms.DataGridView dgvElementosCartuchera;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

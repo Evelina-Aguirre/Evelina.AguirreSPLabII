@@ -37,3 +37,9 @@ public enum Ecaracteristica
     Material,
     Color
 }
+
+public enum EMaterialCartuchera
+{
+    Tela,
+    Plastico
+}

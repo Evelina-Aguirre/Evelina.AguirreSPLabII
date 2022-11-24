@@ -26,3 +26,5 @@ C:\Users\Usuario\Desktop\SP\Evelina.AguirreSPLabII\Evelina.aguirre.SPLaboII\Cart
 C:\Users\Usuario\Desktop\SP\Evelina.AguirreSPLabII\Evelina.aguirre.SPLaboII\Cartuchera\bin\Debug\net5.0-windows\runtimes\win-x86\native\sni.dll
 C:\Users\Usuario\Desktop\SP\Evelina.AguirreSPLabII\Evelina.aguirre.SPLaboII\Cartuchera\bin\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Usuario\Desktop\SP\Evelina.AguirreSPLabII\Evelina.aguirre.SPLaboII\Cartuchera\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Usuario\Desktop\SP\Evelina.AguirreSPLabII\Evelina.aguirre.SPLaboII\Cartuchera\obj\Debug\net5.0-windows\útiles.FrmModificar.resources
+C:\Users\Usuario\Desktop\SP\Evelina.AguirreSPLabII\Evelina.aguirre.SPLaboII\Cartuchera\obj\Debug\net5.0-windows\útiles.FrmAbrirArchivo.resources

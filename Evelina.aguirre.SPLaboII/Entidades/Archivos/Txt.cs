@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Entidades;
 using Entidades.ExcepcionesPropias;
+using Microsoft.VisualBasic.CompilerServices;
 
 namespace Entidades.Archivos
 {
-    public class Txt 
+    public class Txt
     {
         static string path;
         static Txt()

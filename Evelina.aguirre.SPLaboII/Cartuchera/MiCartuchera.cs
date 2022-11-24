@@ -3,50 +3,51 @@ using Entidades.Archivos;
 using Entidades.DB;
 using Entidades.ExcepcionesPropias;
 using System;
+using System.IO;
 using System.Windows.Forms;
+using útiles;
 
 namespace FrmCartuchera
 {
     public partial class FrmManenoCartuchera : Form
     {
-
+     public static int indexListaDeCartucherasEnMochila = 0;
         public FrmManenoCartuchera()
         {
             InitializeComponent();
         }
 
+            Cartuchera<Utiles> cartucheraDB = new Cartuchera<Utiles>("Cartuchera1",10);
         private void Form1_Load(object sender, EventArgs e)
         {
             Mochila.Cartucheras[0].EventoPrecio += Txt.GuardarDatos;
 
+            //cartucheraDB = ConexionDB.TraeDatosDeUnaCartucheraDesdeDB();
+            //Mochila.Cartucheras.Add(cartucheraDB);
+
+            dgvElementosCartuchera.DataSource = Mochila.Cartucheras[indexListaDeCartucherasEnMochila].Elementos;
             cmbMarca.DataSource = System.Enum.GetValues(typeof(EMarca));
-            dgvElementosCartuchera.DataSource = Mochila.Cartucheras[0].Elementos;
             grpCaracteristicas.Text = " Elemento ";
             lblParticular.Text = "Color";
-            cmbMarca.Enabled = false;
+            lblCantidad.Text = "Cantidad actual: " + Mochila.Cartucheras[indexListaDeCartucherasEnMochila].Elementos.Count.ToString()
+                + "  MÁX.: "+ Mochila.Cartucheras[indexListaDeCartucherasEnMochila].CantidadMaxima.ToString();
             cmbParticular.Enabled = false;
-            txtPrecio.Enabled = false;
-            btnAgregar.Enabled = false;
-            this.lblCantidad.Text = Mochila.Cartucheras[0].Elementos.Count.ToString();
+            this.txtPrecio.Enabled = false;
         }
 
         private void btnLapiz_Click(object sender, EventArgs e)
         {
-            cmbMarca.Enabled = true;
             cmbParticular.Enabled = true;
+            this.txtPrecio.Enabled = true;
             cmbParticular.DataSource = System.Enum.GetValues(typeof(EColor));
-            txtPrecio.Enabled = true;
             grpCaracteristicas.Text = " Lapiz ";
             lblParticular.Text = "Color";
-            btnAgregar.Enabled = true;
         }
 
         private void btnGoma_Click(object sender, EventArgs e)
         {
-            btnAgregar.Enabled = true;
-            cmbMarca.Enabled = true;
             cmbParticular.Enabled = true;
-            txtPrecio.Enabled = true;
+            this.txtPrecio.Enabled = true;
             grpCaracteristicas.Text = " Goma ";
             lblParticular.Text = "Para";
             cmbParticular.DataSource = System.Enum.GetValues(typeof(EPara));
@@ -54,10 +55,8 @@ namespace FrmCartuchera
 
         private void btnSacapuntas_Click(object sender, EventArgs e)
         {
-            btnAgregar.Enabled = true;
-            cmbMarca.Enabled = true;
             cmbParticular.Enabled = true;
-            txtPrecio.Enabled = true;
+            this.txtPrecio.Enabled = true;
             grpCaracteristicas.Text = " Sacapuntas ";
             lblParticular.Text = "Material";
             cmbParticular.DataSource = System.Enum.GetValues(typeof(EMaterial));
@@ -72,10 +71,10 @@ namespace FrmCartuchera
 
             try
             {    //si el monto ingresado es valido
-                if (txtPrecio.Text != null && esNumero)
+                if (txtPrecio.Text != null && esNumero && precio >0)
                 {
                     //Se instancia un lapiz/goma/sacapunta según corresponda
-                    Utiles util;
+                    Utiles util = null;
                     if (grpCaracteristicas.Text == " Lapiz ")
                     {
                         util = new Lapiz(float.Parse(txtPrecio.Text), (EMarca)Enum.Parse(typeof(EMarca), cmbMarca.Text), cmbParticular.Text);
@@ -91,7 +90,6 @@ namespace FrmCartuchera
                         util = new Sacapunta(float.Parse(txtPrecio.Text), (EMarca)Enum.Parse(typeof(EMarca), cmbMarca.Text),
                              cmbParticular.Text);
                     }
-
                     //Intenta agregar ese elemento a la cartuchera e invoca el evento que imprime tiket en .txt
                     try
                     {
@@ -106,31 +104,38 @@ namespace FrmCartuchera
                         MessageBox.Show("No se pudo agregar el elemento\n" + ex.Message);
                     }
 
-                    //deshabilita la posibilidad de mofificar sin saber qué elemento será.
-                    cmbMarca.Enabled = false;
-                    cmbParticular.Enabled = false;
-                    txtPrecio.Enabled = false;
-                    btnAgregar.Enabled = false;
-
                     //agrega el nuevo elemento a al dgv
                     dgvElementosCartuchera.DataSource = null;
                     dgvElementosCartuchera.DataSource = Mochila.Cartucheras[0].Elementos;
-                    this.lblCantidad.Text = "Cantidad Actual: " + Mochila.Cartucheras[0].Elementos.Count.ToString();
+                    lblCantidad.Text = "Cantidad actual: " + Mochila.Cartucheras[0].Elementos.Count.ToString() + "  MÁX.: " + Mochila.Cartucheras[0].CantidadMaxima.ToString();
                 }
                 else if (txtPrecio.Text == null || !esNumero)
                 {
-                    throw new MontoInvalidoException("Debe ingresar un valor numérico");
+                    if (this.cmbParticular.SelectedItem is null)
+                    {
+                        throw new CamposVaciosException("Faltan completar campos");
+                    }
+                    else
+                    {
+                        throw new MontoInvalidoException("Debe ingresar un valor numérico");
+                    }
                 }
             }
             catch (MontoInvalidoException ex)
             {
-                this.lblEError.Text = ex.Message;
+                lblEError.Text = ex.Message;
+                timer1.Interval = 3000;
+                timer1.Start();
+            }
+            catch (CamposVaciosException ex)
+            {
+                lblEError.Text = ex.Message;
                 timer1.Interval = 3000;
                 timer1.Start();
             }
             catch (Exception ex)
             {
-                this.lblEError.Text = ex.Message;
+                lblEError.Text = ex.Message;
                 timer1.Interval = 3000;
                 timer1.Start();
             }
@@ -153,9 +158,10 @@ namespace FrmCartuchera
             Lapiz.FormatoManejoArchivos = "Json";
             if (dgvElementosCartuchera.Rows.Count > 0 && dgvElementosCartuchera.Rows[0].Cells[0].Value is not null)
             {
-                Lapiz lapiz = new Lapiz((float)Convert.ToDouble(this.dgvElementosCartuchera.CurrentRow.Cells[1].Value), (EMarca)this.dgvElementosCartuchera.CurrentRow.Cells[2].Value,
-                    this.dgvElementosCartuchera.CurrentRow.Cells[3].Value.ToString());
+                Lapiz lapiz = new Lapiz((float)Convert.ToDouble(dgvElementosCartuchera.CurrentRow.Cells[1].Value), (EMarca)dgvElementosCartuchera.CurrentRow.Cells[2].Value,
+                    dgvElementosCartuchera.CurrentRow.Cells[3].Value.ToString());
                 lapiz.GuardarDatos(lapiz);
+                MessageBox.Show("Se serializó el lapiz seleccionado");
             }
 
         }
@@ -164,9 +170,10 @@ namespace FrmCartuchera
             Lapiz.FormatoManejoArchivos = "Xml";
             if (dgvElementosCartuchera.Rows.Count > 0 && dgvElementosCartuchera.Rows[0].Cells[0].Value is not null)
             {
-                Lapiz lapiz = new Lapiz((float)Convert.ToDouble(this.dgvElementosCartuchera.CurrentRow.Cells[1].Value), (EMarca)this.dgvElementosCartuchera.CurrentRow.Cells[2].Value,
-                    this.dgvElementosCartuchera.CurrentRow.Cells[3].Value.ToString());
+                Lapiz lapiz = new Lapiz((float)Convert.ToDouble(dgvElementosCartuchera.CurrentRow.Cells[1].Value), (EMarca)dgvElementosCartuchera.CurrentRow.Cells[2].Value,
+                    dgvElementosCartuchera.CurrentRow.Cells[3].Value.ToString());
                 lapiz.GuardarDatos(lapiz);
+                MessageBox.Show("Se serializó el lapíz seleccionado");
             }
 
         }
@@ -178,7 +185,6 @@ namespace FrmCartuchera
             lapiz = lapiz.LeerDatos();
 
             MessageBox.Show(lapiz.MostrarDatos());
-
 
         }
         private void btnLeerXml_Click(object sender, EventArgs e)
@@ -200,26 +206,24 @@ namespace FrmCartuchera
         private void btnQuitar_Click(object sender, EventArgs e)
         {
             Utiles l;
-            if (this.dgvElementosCartuchera.Rows.Count > 0 && dgvElementosCartuchera.CurrentRow.Cells[0].Value is not null)
+            if (dgvElementosCartuchera.Rows.Count > 0 && dgvElementosCartuchera.CurrentRow.Cells[0].Value is not null)
             {
-                string nombre = this.dgvElementosCartuchera.CurrentRow.Cells[0].Value.ToString();
-                float precio = float.Parse(this.dgvElementosCartuchera.CurrentRow.Cells[1].Value.ToString());
-                EMarca marca = (EMarca)this.dgvElementosCartuchera.CurrentRow.Cells[2].Value;
-                string caracteristica = this.dgvElementosCartuchera.CurrentRow.Cells[3].Value.ToString();
+                string nombre = dgvElementosCartuchera.CurrentRow.Cells[0].Value.ToString();
+                float precio = float.Parse(dgvElementosCartuchera.CurrentRow.Cells[1].Value.ToString());
+                EMarca marca = (EMarca)dgvElementosCartuchera.CurrentRow.Cells[2].Value;
+                string caracteristica = dgvElementosCartuchera.CurrentRow.Cells[3].Value.ToString();
 
-                Utiles g = new Goma(precio, marca, caracteristica);
-                Utiles s = new Sacapunta(precio, marca, caracteristica);
-                if(this.dgvElementosCartuchera.CurrentRow.Cells[0].Value.ToString() == "LAPIZ")
+                if (dgvElementosCartuchera.CurrentRow.Cells[0].Value.ToString() == "LAPIZ")
                 {
                     l = new Lapiz(precio, marca, caracteristica);
-                    Mochila.Cartucheras[0] -= l;  
+                    Mochila.Cartucheras[0] -= l;
                 }
-                else if(this.dgvElementosCartuchera.CurrentRow.Cells[0].Value.ToString() == "GOMA")
+                else if (dgvElementosCartuchera.CurrentRow.Cells[0].Value.ToString() == "GOMA")
                 {
                     l = new Goma(precio, marca, caracteristica);
                     Mochila.Cartucheras[0] -= l;
                 }
-                else if (this.dgvElementosCartuchera.CurrentRow.Cells[0].Value.ToString() == "SACAPUNTAS")
+                else if (dgvElementosCartuchera.CurrentRow.Cells[0].Value.ToString() == "SACAPUNTAS")
                 {
                     l = new Sacapunta(precio, marca, caracteristica);
                     Mochila.Cartucheras[0] -= l;
@@ -227,11 +231,9 @@ namespace FrmCartuchera
                 dgvElementosCartuchera.DataSource = null;
                 dgvElementosCartuchera.DataSource = Mochila.Cartucheras[0].Elementos;
 
-
-
             }
-    
-     }
+
+        }
 
 
 
@@ -248,17 +250,58 @@ namespace FrmCartuchera
 
         private void btnCargarDesdeDB_Click(object sender, EventArgs e)
         {
-            Cartuchera<Utiles> cartucheraAux = new Cartuchera<Utiles>(10);
+            Cartuchera<Utiles> cartucheraAux = new Cartuchera<Utiles>("cartucheraAux",10);
             cartucheraAux = ConexionDB.TraeDatosDeUnaCartucheraDesdeDB();
-            this.dgvElementosCartuchera.DataSource = cartucheraAux.Elementos;
+            //Mochila.Cartucheras.RemoveAt(0);
+            Mochila.Cartucheras.Add(cartucheraAux);
+            dgvElementosCartuchera.DataSource = cartucheraAux.Elementos;
         }
 
         private void btnGuardarCambios_Click(object sender, EventArgs e)
         {
-            foreach (Utiles item in Mochila.Cartucheras[0].Elementos)
+            ConexionDB.borraElementosActualesEnUnaCartucheraEnDB();
+            if (Mochila.Cartucheras[0].Elementos.Count <= Mochila.Cartucheras[0].CantidadMaxima)
             {
-                ConexionDB.AgregaElementoEnDB(item);
+                foreach (Utiles item in Mochila.Cartucheras[0].Elementos)
+                {
+                    ConexionDB.AgregaElementoEnDB(item);
+                }
+
             }
+        }
+
+        private void btnModifiar_Click(object sender, EventArgs e)
+        {
+            Utiles util = null;
+            if (dgvElementosCartuchera.Rows.Count > 0 && dgvElementosCartuchera.CurrentRow.Cells[0].Value is not null)
+            {
+                string nombre = dgvElementosCartuchera.CurrentRow.Cells[0].Value.ToString();
+                float precio = float.Parse(dgvElementosCartuchera.CurrentRow.Cells[1].Value.ToString());
+                EMarca marca = (EMarca)dgvElementosCartuchera.CurrentRow.Cells[2].Value;
+                string caracteristica = dgvElementosCartuchera.CurrentRow.Cells[3].Value.ToString();
+
+                if (dgvElementosCartuchera.CurrentRow.Cells[0].Value.ToString() == "LAPIZ")
+                {
+                    util = new Lapiz(precio, marca, caracteristica);
+
+                }
+                else if (dgvElementosCartuchera.CurrentRow.Cells[0].Value.ToString() == "GOMA")
+                {
+                    util = new Goma(precio, marca, caracteristica);
+
+                }
+                else if (dgvElementosCartuchera.CurrentRow.Cells[0].Value.ToString() == "SACAPUNTAS")
+                {
+                    util = new Sacapunta(precio, marca, caracteristica);
+
+                }
+                FrmModificar frmModificar = new FrmModificar(util, this);
+                frmModificar.ShowDialog();
+
+
+            }
+                dgvElementosCartuchera.DataSource = null;
+                dgvElementosCartuchera.DataSource = Mochila.Cartucheras[indexListaDeCartucherasEnMochila].Elementos;
         }
 
         private void FrmManenoCartuchera_MouseUp(object sender, MouseEventArgs e)
@@ -266,12 +309,25 @@ namespace FrmCartuchera
             m = 0;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmAbrirArchivo frmleerArchivo = new FrmAbrirArchivo();
+            frmleerArchivo.ShowDialog();
+           
+        }
+
         private void FrmManenoCartuchera_MouseMove(object sender, MouseEventArgs e)
         {
             if (m == 1)
             {
-                this.SetDesktopLocation(MousePosition.X - mx, MousePosition.Y - my);
+                SetDesktopLocation(MousePosition.X - mx, MousePosition.Y - my);
             }
         }
+
+        public void ActualizadDgvElementosCartuchera(int index)
+        {
+            this.dgvElementosCartuchera.DataSource = Mochila.Cartucheras[indexListaDeCartucherasEnMochila].Elementos;
+        }
+        
     }
 }

@@ -12,7 +12,7 @@ namespace Entidades
         {
 
         }
-        public Goma(float precio, EMarca marca, string para) : base("GOMA",precio, marca, para)
+        public Goma(float precio, EMarca marca, string caracteristica) : base("GOMA",precio, marca, caracteristica)
         {
         }
       

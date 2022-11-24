@@ -9,7 +9,7 @@ namespace Entidades
         private string nombre;
         private float precio;
         private EMarca marca;
-        string caracteristica;
+        private string caracteristica;
 
         public Utiles(){
             }
@@ -35,7 +35,7 @@ namespace Entidades
         /// <returns></returns>
         public static bool operator ==(Utiles u1, Utiles U2)
         {
-            return u1.Nombre == U2.Nombre && u1.Precio == U2.Precio && u1.Caracteristica == U2.Caracteristica
+            return u1.Nombre == U2.Nombre && u1.Precio == U2.Precio /*&& u1.Caracteristica == U2.Caracteristica*/
                 && u1.Marca == U2.Marca;
         }
 

@@ -11,7 +11,7 @@ namespace Entidades
         public Sacapunta()
         { 
         }
-        public Sacapunta(float precio, EMarca marca, string material) : base("SACAPUNTAS",precio, marca,material)
+        public Sacapunta(float precio, EMarca marca, string caracteristica) : base("SACAPUNTAS",precio, marca,caracteristica)
         { 
         }
        
