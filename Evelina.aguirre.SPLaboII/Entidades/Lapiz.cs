@@ -16,15 +16,6 @@ namespace Entidades
         public static string FormatoManejoArchivos { get => formatoManejoArchivos; set => formatoManejoArchivos = value; }
 
 
-        public override string MostrarDatos()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(base.MostrarDatos());
-            sb.AppendLine($"Color: {base.Caracteristica}");
-            return sb.ToString();
-
-        }
-
         /// <summary>
         /// Serializa un lapiz en formato Json o xml.
         /// </summary>
@@ -35,7 +26,6 @@ namespace Entidades
             {
             Json json = new Json();
                 json.GuardarDatos(lapiz);
-
             }
             else if(FormatoManejoArchivos == "Xml")
             {
@@ -65,6 +55,19 @@ namespace Entidades
             }
 
             return lapiz;
+        }
+
+        /// <summary>
+        /// Sobreescribe el método MostrarDatos de útiles para agregarle el color del lapiz.
+        /// </summary>
+        /// <returns></returns>
+        public override string MostrarDatos()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(base.MostrarDatos());
+            sb.AppendLine($"Color: {base.Caracteristica}");
+            return sb.ToString();
+
         }
 
     }

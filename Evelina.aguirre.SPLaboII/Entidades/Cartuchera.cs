@@ -77,6 +77,21 @@ namespace Entidades
             return c;
         }
 
+        public static Cartuchera<T> operator -(Cartuchera<T> c, T util)
+        {
+            if (c.elementos.Count > 0)
+            {
+                foreach (T item in c.elementos)
+                {
+                    if (item == util)
+                    {
+                        c.elementos.Remove(util);
+                    }
+                }
+            }
+            return c;
+        }
+
         /// <summary>
         /// Muestra los datos de una cartuchera.
         /// </summary>
@@ -88,7 +103,7 @@ namespace Entidades
             sb.AppendLine($"Cantidad de elementos: {CantidadActual}");
             sb.AppendLine($"Precio total: {PrecioTotal}\n");
             sb.AppendLine("------------------------- ");
-            sb.AppendLine("Elementos:"); 
+            sb.AppendLine("Elementos:");
             foreach (Utiles item in Elementos)
             {
                 sb.AppendLine(item.MostrarDatos());

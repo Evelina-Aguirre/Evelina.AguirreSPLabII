@@ -27,6 +27,34 @@ namespace Entidades
         public EMarca Marca { get => marca; set => marca = value; }
         public string Caracteristica { get => caracteristica; set => caracteristica = value; }
 
+        /// <summary>
+        /// Dos utiles serán iguales si todos sus atributos lo son.
+        /// </summary>
+        /// <param name="u1"></param>
+        /// <param name="U2"></param>
+        /// <returns></returns>
+        public static bool operator ==(Utiles u1, Utiles U2)
+        {
+            return u1.Nombre == U2.Nombre && u1.Precio == U2.Precio && u1.Caracteristica == U2.Caracteristica
+                && u1.Marca == U2.Marca;
+        }
+
+
+        /// <summary>
+        /// Dos objetos son diferentes si alguno de sus atributos no coincide con el que se lo compara.
+        /// </summary>
+        /// <param name="u1"></param>
+        /// <param name="u2"></param>
+        /// <returns></returns>
+        public static bool operator !=(Utiles u1, Utiles u2)
+        {
+            return !(u1 == u2);
+        }
+
+        /// <summary>
+        /// Muestra los datos del útil.
+        /// </summary>
+        /// <returns></returns>
         public virtual string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();

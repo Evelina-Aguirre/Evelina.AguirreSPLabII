@@ -30,9 +30,9 @@ namespace FrmCartuchera
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnLapiz = new System.Windows.Forms.Button();
             this.dgvElementosCartuchera = new System.Windows.Forms.DataGridView();
             this.btnGoma = new System.Windows.Forms.Button();
@@ -58,6 +58,7 @@ namespace FrmCartuchera
             this.label1 = new System.Windows.Forms.Label();
             this.btnCargarDesdeDB = new System.Windows.Forms.Button();
             this.btnGuardarCambios = new System.Windows.Forms.Button();
+            this.lblCantidad = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvElementosCartuchera)).BeginInit();
             this.grpCaracteristicas.SuspendLayout();
             this.SuspendLayout();
@@ -82,36 +83,36 @@ namespace FrmCartuchera
             this.dgvElementosCartuchera.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvElementosCartuchera.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvElementosCartuchera.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(104)))), ((int)(((byte)(202)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(104)))), ((int)(((byte)(202)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvElementosCartuchera.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(104)))), ((int)(((byte)(202)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(104)))), ((int)(((byte)(202)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvElementosCartuchera.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvElementosCartuchera.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(157)))), ((int)(((byte)(216)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(102)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvElementosCartuchera.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(157)))), ((int)(((byte)(216)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(102)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvElementosCartuchera.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvElementosCartuchera.EnableHeadersVisualStyles = false;
             this.dgvElementosCartuchera.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(205)))), ((int)(((byte)(235)))));
             this.dgvElementosCartuchera.Location = new System.Drawing.Point(21, 32);
             this.dgvElementosCartuchera.Name = "dgvElementosCartuchera";
             this.dgvElementosCartuchera.ReadOnly = true;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(170)))), ((int)(((byte)(221)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(129)))), ((int)(((byte)(203)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvElementosCartuchera.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(170)))), ((int)(((byte)(221)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(129)))), ((int)(((byte)(203)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvElementosCartuchera.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvElementosCartuchera.RowHeadersVisible = false;
             this.dgvElementosCartuchera.RowTemplate.Height = 25;
             this.dgvElementosCartuchera.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -323,7 +324,7 @@ namespace FrmCartuchera
             this.btnLeerXml.FlatAppearance.BorderSize = 0;
             this.btnLeerXml.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLeerXml.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLeerXml.Location = new System.Drawing.Point(331, 238);
+            this.btnLeerXml.Location = new System.Drawing.Point(331, 240);
             this.btnLeerXml.Name = "btnLeerXml";
             this.btnLeerXml.Size = new System.Drawing.Size(84, 56);
             this.btnLeerXml.TabIndex = 24;
@@ -389,12 +390,24 @@ namespace FrmCartuchera
             this.btnGuardarCambios.UseVisualStyleBackColor = false;
             this.btnGuardarCambios.Click += new System.EventHandler(this.btnGuardarCambios_Click);
             // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblCantidad.Location = new System.Drawing.Point(295, 14);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(107, 15);
+            this.lblCantidad.TabIndex = 28;
+            this.lblCantidad.Text = "Cantidad Actual : 3";
+            this.lblCantidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // FrmManenoCartuchera
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(219)))));
             this.ClientSize = new System.Drawing.Size(835, 356);
+            this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.btnGuardarCambios);
             this.Controls.Add(this.btnCargarDesdeDB);
             this.Controls.Add(this.label1);
@@ -456,5 +469,6 @@ namespace FrmCartuchera
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCargarDesdeDB;
         private System.Windows.Forms.Button btnGuardarCambios;
+        private System.Windows.Forms.Label lblCantidad;
     }
 }

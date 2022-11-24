@@ -27,6 +27,7 @@ namespace FrmCartuchera
             cmbParticular.Enabled = false;
             txtPrecio.Enabled = false;
             btnAgregar.Enabled = false;
+            this.lblCantidad.Text = Mochila.Cartucheras[0].Elementos.Count.ToString();
         }
 
         private void btnLapiz_Click(object sender, EventArgs e)
@@ -114,6 +115,7 @@ namespace FrmCartuchera
                     //agrega el nuevo elemento a al dgv
                     dgvElementosCartuchera.DataSource = null;
                     dgvElementosCartuchera.DataSource = Mochila.Cartucheras[0].Elementos;
+                    this.lblCantidad.Text = "Cantidad Actual: "+Mochila.Cartucheras[0].Elementos.Count.ToString();
                 }
                 else if (txtPrecio.Text == null || !esNumero)
                 {
@@ -197,9 +199,11 @@ namespace FrmCartuchera
 
         private void btnQuitar_Click(object sender, EventArgs e)
         {
-            
-           
-        }
+            if (dgvCarritoCliente.Rows.Count > 1 && dgvCarritoCliente.CurrentRow.Cells[0].Value is not null)
+            {
+
+
+            }
 
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
