@@ -68,7 +68,7 @@ namespace FrmCartuchera
 
             try
             {    //si el monto ingresado es valido
-                if (txtPrecio.Text != null && esNumero && precio >0)
+                if (txtPrecio.Text != null && esNumero && precio > 0)
                 {
                     //Se instancia un lapiz/goma/sacapunta según corresponda
                     Utiles util = null;
