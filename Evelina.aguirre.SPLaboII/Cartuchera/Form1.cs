@@ -78,7 +78,7 @@ namespace FrmCartuchera
                     Utiles util;
                     if (grpCaracteristicas.Text == " Lapiz ")
                     {
-                        util = new Lapiz(float.Parse(txtPrecio.Text), (EMarca)Enum.Parse(typeof(EMarca), cmbMarca.Text),cmbParticular.Text);
+                        util = new Lapiz(float.Parse(txtPrecio.Text), (EMarca)Enum.Parse(typeof(EMarca), cmbMarca.Text), cmbParticular.Text);
 
                     }
                     else if (grpCaracteristicas.Text == " Goma ")
@@ -115,7 +115,7 @@ namespace FrmCartuchera
                     //agrega el nuevo elemento a al dgv
                     dgvElementosCartuchera.DataSource = null;
                     dgvElementosCartuchera.DataSource = Mochila.Cartucheras[0].Elementos;
-                    this.lblCantidad.Text = "Cantidad Actual: "+Mochila.Cartucheras[0].Elementos.Count.ToString();
+                    this.lblCantidad.Text = "Cantidad Actual: " + Mochila.Cartucheras[0].Elementos.Count.ToString();
                 }
                 else if (txtPrecio.Text == null || !esNumero)
                 {
@@ -124,11 +124,11 @@ namespace FrmCartuchera
             }
             catch (MontoInvalidoException ex)
             {
-                this.lblEError.Text =ex.Message;
+                this.lblEError.Text = ex.Message;
                 timer1.Interval = 3000;
                 timer1.Start();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 this.lblEError.Text = ex.Message;
                 timer1.Interval = 3000;
@@ -149,15 +149,15 @@ namespace FrmCartuchera
         }
 
         private void btnExportarJson_Click(object sender, EventArgs e)
-        { 
+        {
             Lapiz.FormatoManejoArchivos = "Json";
             if (dgvElementosCartuchera.Rows.Count > 0 && dgvElementosCartuchera.Rows[0].Cells[0].Value is not null)
             {
-                Lapiz lapiz = new Lapiz((float)Convert.ToDouble(this.dgvElementosCartuchera.CurrentRow.Cells[1].Value),(EMarca)this.dgvElementosCartuchera.CurrentRow.Cells[2].Value, 
+                Lapiz lapiz = new Lapiz((float)Convert.ToDouble(this.dgvElementosCartuchera.CurrentRow.Cells[1].Value), (EMarca)this.dgvElementosCartuchera.CurrentRow.Cells[2].Value,
                     this.dgvElementosCartuchera.CurrentRow.Cells[3].Value.ToString());
                 lapiz.GuardarDatos(lapiz);
             }
-            
+
         }
         private void btnExpotarLapiz_Click(object sender, EventArgs e)
         {
@@ -174,11 +174,11 @@ namespace FrmCartuchera
         private void btnLeerJson_Click(object sender, EventArgs e)
         {
             Lapiz.FormatoManejoArchivos = "Json";
-            Lapiz lapiz = new Lapiz(0,EMarca.UtilGenerico,"");
+            Lapiz lapiz = new Lapiz(0, EMarca.UtilGenerico, "");
             lapiz = lapiz.LeerDatos();
 
             MessageBox.Show(lapiz.MostrarDatos());
-            
+
 
         }
         private void btnLeerXml_Click(object sender, EventArgs e)
@@ -199,11 +199,41 @@ namespace FrmCartuchera
 
         private void btnQuitar_Click(object sender, EventArgs e)
         {
-            if (dgvCarritoCliente.Rows.Count > 1 && dgvCarritoCliente.CurrentRow.Cells[0].Value is not null)
+            Utiles l;
+            if (this.dgvElementosCartuchera.Rows.Count > 0 && dgvElementosCartuchera.CurrentRow.Cells[0].Value is not null)
             {
+                string nombre = this.dgvElementosCartuchera.CurrentRow.Cells[0].Value.ToString();
+                float precio = float.Parse(this.dgvElementosCartuchera.CurrentRow.Cells[1].Value.ToString());
+                EMarca marca = (EMarca)this.dgvElementosCartuchera.CurrentRow.Cells[2].Value;
+                string caracteristica = this.dgvElementosCartuchera.CurrentRow.Cells[3].Value.ToString();
+
+                Utiles g = new Goma(precio, marca, caracteristica);
+                Utiles s = new Sacapunta(precio, marca, caracteristica);
+                if(this.dgvElementosCartuchera.CurrentRow.Cells[0].Value.ToString() == "LAPIZ")
+                {
+                    l = new Lapiz(precio, marca, caracteristica);
+                    Mochila.Cartucheras[0] -= l;  
+                }
+                else if(this.dgvElementosCartuchera.CurrentRow.Cells[0].Value.ToString() == "GOMA")
+                {
+                    l = new Goma(precio, marca, caracteristica);
+                    Mochila.Cartucheras[0] -= l;
+                }
+                else if (this.dgvElementosCartuchera.CurrentRow.Cells[0].Value.ToString() == "SACAPUNTAS")
+                {
+                    l = new Sacapunta(precio, marca, caracteristica);
+                    Mochila.Cartucheras[0] -= l;
+                }
+                dgvElementosCartuchera.DataSource = null;
+                dgvElementosCartuchera.DataSource = Mochila.Cartucheras[0].Elementos;
+
 
 
             }
+    
+     }
+
+
 
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {

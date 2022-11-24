@@ -79,16 +79,24 @@ namespace Entidades
 
         public static Cartuchera<T> operator -(Cartuchera<T> c, T util)
         {
+            bool existe = false;
+            int index = -1;
             if (c.elementos.Count > 0)
             {
                 foreach (T item in c.elementos)
                 {
                     if (item == util)
                     {
-                        c.elementos.Remove(util);
+                        existe = true;
+                        index = c.elementos.IndexOf(item);
                     }
                 }
-            }
+                if (existe)
+                {
+                    c.elementos.RemoveAt(index);
+                }
+
+             }
             return c;
         }
 
