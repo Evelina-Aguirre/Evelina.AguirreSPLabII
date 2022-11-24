@@ -28,8 +28,7 @@ namespace Entidades
         }
 
         public List<T> Elementos { get => elementos; set => elementos = value; }
-        public int CantidadActual { get => cantidadActual; }
-
+        public int CantidadActual { get => elementos.Count;}
         public int CantidadMaxima { get => cantidadMaxima; set => cantidadMaxima = value; }
         public float PrecioTotal
         {

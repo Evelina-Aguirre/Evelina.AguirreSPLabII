@@ -158,10 +158,18 @@ namespace FrmCartuchera
             Lapiz.FormatoManejoArchivos = "Json";
             if (dgvElementosCartuchera.Rows.Count > 0 && dgvElementosCartuchera.Rows[0].Cells[0].Value is not null)
             {
+                if(dgvElementosCartuchera.CurrentRow.Cells[0].Value.ToString() == "LAPIZ")
+                {
                 Lapiz lapiz = new Lapiz((float)Convert.ToDouble(dgvElementosCartuchera.CurrentRow.Cells[1].Value), (EMarca)dgvElementosCartuchera.CurrentRow.Cells[2].Value,
                     dgvElementosCartuchera.CurrentRow.Cells[3].Value.ToString());
                 lapiz.GuardarDatos(lapiz);
-                MessageBox.Show("Se serializó el lapiz seleccionado");
+                 MessageBox.Show("Se serializó el lapiz seleccionado");
+
+                }
+                else
+                {
+                    MessageBox.Show("Solo se pueden serializar lapices");
+                }
             }
 
         }
@@ -170,10 +178,17 @@ namespace FrmCartuchera
             Lapiz.FormatoManejoArchivos = "Xml";
             if (dgvElementosCartuchera.Rows.Count > 0 && dgvElementosCartuchera.Rows[0].Cells[0].Value is not null)
             {
-                Lapiz lapiz = new Lapiz((float)Convert.ToDouble(dgvElementosCartuchera.CurrentRow.Cells[1].Value), (EMarca)dgvElementosCartuchera.CurrentRow.Cells[2].Value,
+                if (dgvElementosCartuchera.CurrentRow.Cells[0].Value.ToString() == "LAPIZ")
+                {
+                    Lapiz lapiz = new Lapiz((float)Convert.ToDouble(dgvElementosCartuchera.CurrentRow.Cells[1].Value), (EMarca)dgvElementosCartuchera.CurrentRow.Cells[2].Value,
                     dgvElementosCartuchera.CurrentRow.Cells[3].Value.ToString());
                 lapiz.GuardarDatos(lapiz);
                 MessageBox.Show("Se serializó el lapíz seleccionado");
+                }
+                else
+                {
+                    MessageBox.Show("Solo se pueden serializar lapices");
+                }
             }
 
         }
